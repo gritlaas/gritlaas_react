@@ -23,7 +23,7 @@ const Onboarding = () => {
       >Skip
       </Text>
       <Image
-          source={require('../assets/girl.png')}
+          source={require('../../Assets/Images/girl.png')}
           style={{ width: 300, height: 300, marginTop: 30 }}
         />
       </View>

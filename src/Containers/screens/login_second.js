@@ -3,7 +3,6 @@ import { StyleSheet, Text, View, Image, ScrollView, TextInput, Pressable,
      Dimensions, SafeAreaView } from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
 import { Card, SearchBar } from '@rneui/themed';
-import * as Progress from 'react-native-progress';
 import { Button, Dialog, Divider } from '@rneui/base';
 
 
@@ -17,7 +16,7 @@ const LoginSecond = ({navigation}) => {
     <ScrollView horizontal>
         <View>
             <Image
-             source={require('../assets/logo.png')}
+             source={require('../../Assets/Images/logo.png')}
              style={{ width: 70, height: 70, borderRadius: 100, marginTop: 70, marginLeft: 30}}>
              </Image>
         </View>
@@ -123,7 +122,7 @@ const LoginSecond = ({navigation}) => {
     
 <Button
     type="outline"
-    icon={<Image source={require("../assets/google.png")} style={{ width: 20, height:20}}/>}
+    icon={<Image source={require("../../Assets/Images/google.png")} style={{ width: 20, height:20}}/>}
     titleStyle={{ color: "#0B774B", fontSize:15, margin:5 }} 
     buttonStyle =
     {{

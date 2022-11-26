@@ -19,7 +19,7 @@ const Home = () => {
     containerStyle= {{ backgroundColor:"#27BC7F", margin: 0, padding:0}}
     >
     <Card.Image
-        source={require('../assets/avatar.png')}
+        source={require('../../Assets/Images/avatar.png')}
         style={{ width: 50, height: 50, borderRadius: 100, marginTop: 70, marginLeft: 20}}
     >
     </Card.Image>
@@ -215,7 +215,7 @@ const Home = () => {
     borderRadius = {10}
     containerStyle= {{backgroundColor:"#96F2D4", padding:0, marginLeft:30}}>
     <Card.Image
-    source={require('../assets/react.jpeg')}
+    source={require('../../Assets/Images/react.jpeg')}
     style={{ width: 100, height: 100, borderRadius: 10, marginLeft: 0, padding:0}}
     >
     <Text 
@@ -243,7 +243,7 @@ const Home = () => {
     borderRadius = {10}
     containerStyle= {{backgroundColor:"#96F2D4", marginLeft:0, padding:0}}>
     <Card.Image
-    source={require('../assets/react.jpeg')}
+    source={require('../../Assets/Images/react.jpeg')}
     style={{ width: 100, height: 100, borderRadius: 10, marginLeft: 0, padding:0}}
     >
     <Text 
@@ -280,7 +280,7 @@ const Home = () => {
     snapToInterval={ width }>
     <View style={{marginTop:10}}>
     <Card.Image
-    source={require('../assets/tutor.png')}
+    source={require('../../Assets/Images/tutor.png')}
     style={{ width: 80, height: 80, borderRadius: 100, marginLeft: 30}}
     >
     </Card.Image>
@@ -309,7 +309,7 @@ const Home = () => {
 
     <View style={{marginTop:10}}>
     <Card.Image
-    source={require('../assets/tutor.png')}
+    source={require('../../Assets/Images/tutor.png')}
     style={{ width: 80, height: 80, borderRadius: 100, marginLeft: 30}}
     >
     </Card.Image>
@@ -338,7 +338,7 @@ const Home = () => {
 
     <View style={{marginTop:10}}>
     <Card.Image
-    source={require('../assets/tutor.png')}
+    source={require('../../Assets/Images/tutor.png')}
     style={{ width: 80, height: 80, borderRadius: 100, marginLeft: 30}}
     >
     </Card.Image>

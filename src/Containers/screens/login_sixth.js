@@ -18,7 +18,7 @@ const LoginSixth = () => {
     <ScrollView horizontal>
         <View>
             <Image
-             source={require('../assets/logo.png')}
+             source={require('../../Assets/Images/logo.png')}
              style={{ width: 70, height: 70, borderRadius: 100, marginTop: 70, marginLeft: 30}}>
              </Image>
         </View>

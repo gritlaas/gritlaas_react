@@ -7,7 +7,7 @@ const Splash = () => {
     <ScrollView>
       <View style={styles.container}>
       <Image
-          source={require('../assets/logo.png')}
+          source={require('../../Assets/Images/logo.png')}
           style={{ width: 200, height: 200, marginTop: 250 }}
         />
       </View>
