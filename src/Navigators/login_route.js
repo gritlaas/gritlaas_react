@@ -2,7 +2,7 @@ import React from 'react';
 import { StyleSheet, Text, View, Image, ScrollView, TextInput, Pressable,
     Dimensions, SafeAreaView } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
-import { createStackNavigator } from 'react-navigation-stack';
+import { createStackNavigator } from '@react-navigation/stack';
 import { createAppContainer } from 'react-navigation';
 import LoginFirst from '../Containers/screens/login_first'
 import LoginSecond from '../Containers/screens/login_second';
