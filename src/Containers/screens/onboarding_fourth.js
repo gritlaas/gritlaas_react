@@ -1,16 +1,14 @@
-import { StatusBar } from 'expo-status-bar';
 import React from 'react';
-import { StyleSheet, Text, View, Image, ScrollView, TextInput, Pressable } from 'react-native';
+import { StyleSheet, Text, View, Image, ScrollView } from 'react-native';
 import Icon from 'react-native-vector-icons/AntDesign';
 import { Pagination } from 'react-native-snap-carousel'
 import { Button } from '@rneui/base';
 
 
-const Onboarding_4 = () => {
+const OnboardingFourth = ({ navigation }) => {
   return (
     <ScrollView>
       <View style={styles.container}>
-      <StatusBar style="auto" />
       <Text
       style={{
         marginTop: 20,
@@ -18,7 +16,6 @@ const Onboarding_4 = () => {
         color: '#0B774B',
         fontSize: 15,
         fontWeight: "bold",
-        marginTop: 80,
         marginLeft: 200
       }}
       >Skip
@@ -66,9 +63,10 @@ const Onboarding_4 = () => {
         inactiveDotScale={0.6}
         tappableDots={true}
       />
-      <Button
+    <Button
     type="solid"
-    titleStyle={{ color: "white", fontSize:15 }} 
+    titleStyle={{ color: "white", fontSize:15 }}
+    onPress = {() => navigation.navigate('LoginFirst')}
     buttonStyle =
     {{
     height: 50,
@@ -98,4 +96,4 @@ const styles = StyleSheet.create({
     },
   });
 
-export default Onboarding_4;
+export default OnboardingFourth

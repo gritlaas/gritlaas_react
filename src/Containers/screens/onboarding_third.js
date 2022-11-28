@@ -1,15 +1,13 @@
-import { StatusBar } from 'expo-status-bar';
 import React from 'react';
-import { StyleSheet, Text, View, Image, ScrollView, TextInput, Pressable } from 'react-native';
+import { StyleSheet, Text, View, Image, ScrollView } from 'react-native';
 import Icon from 'react-native-vector-icons/AntDesign';
 import { Pagination } from 'react-native-snap-carousel'
 
 
-const Onboarding = () => {
+const OnboardingThird = ({navigation}) => {
   return (
     <ScrollView>
       <View style={styles.container}>
-      <StatusBar style="auto" />
       <Text
       style={{
         marginTop: 20,
@@ -17,13 +15,12 @@ const Onboarding = () => {
         color: '#0B774B',
         fontSize: 15,
         fontWeight: "bold",
-        marginTop: 80,
         marginLeft: 200
       }}
       >Skip
       </Text>
       <Image
-          source={require('../../Assets/Images/girl.png')}
+          source={require('../../Assets/Images/boy_2.png')}
           style={{ width: 300, height: 300, marginTop: 30 }}
         />
       </View>
@@ -50,7 +47,7 @@ const Onboarding = () => {
       </Text>
       <Pagination
         dotsLength={4}
-        activeDotIndex={0}
+        activeDotIndex={2}
         dotStyle={{
           width: 10,
           height: 10,
@@ -63,7 +60,7 @@ const Onboarding = () => {
         inactiveDotScale={0.6}
         tappableDots={true}
       />
-      <Pressable
+      <Icon
       style ={{
       backgroundColor: "#0B774B",
       borderRadius: 50,
@@ -73,14 +70,14 @@ const Onboarding = () => {
       height : 50,
       paddingLeft:12,
       marginTop:5,
+      paddingTop: 10,
       alignSelf: "center"
-      }}>
-        <Icon
-        name='right'
-        size={30}
-        color="white">
-        </Icon>
-      </Pressable>
+      }}
+      name= 'right'
+      size={30}
+      color="white"
+      onPress = {() => navigation.navigate('Onboarding_Fourth')}>
+      </Icon>
     </ScrollView>
   );
 }
@@ -94,4 +91,4 @@ const styles = StyleSheet.create({
     },
   });
 
-export default Onboarding;
+export default OnboardingThird;

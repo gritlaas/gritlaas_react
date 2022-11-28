@@ -1,9 +1,7 @@
-import { StatusBar } from 'expo-status-bar';
-import React, {useEffect} from 'react';
-import { StyleSheet, Text, View, Image, ScrollView, TextInput, Pressable } from 'react-native';
-// import SplashScreen from 'react-native-splash-screen';
-import Navigator from './Navigators/login_route';
-import Login from './Containers/screens/login';
+import React from 'react';
+import { StyleSheet } from 'react-native';
+import Navigator from './Navigators/route';
+
 
 const App = () => {
   return (

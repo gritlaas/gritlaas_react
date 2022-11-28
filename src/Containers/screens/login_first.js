@@ -8,7 +8,7 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
 
-const LoginFirst = () => {
+const LoginFirst = ({ navigation }) => {
     var width = Dimensions.get('window').width; //full width
     var height = Dimensions.get('window').height; //full height
     const [text, onChangeText] = React.useState(null);
@@ -122,6 +122,7 @@ const LoginFirst = () => {
     backgroundColor: "#0B774B",
     borderRadius: 12
     }}
+    onPress = {() => navigation.navigate('LoginSecond')}
     >
         Continue
     </Button>
@@ -156,7 +157,6 @@ const LoginFirst = () => {
     borderRadius: 12,
     borderColor: "#0B774B"
     }}
-    onPress = {() => navigation.navigate('')}
     >
         Continue with Google
     </Button>
