@@ -7,8 +7,8 @@ import { Button } from '@rneui/base';
 
 const OnboardingFourth = ({ navigation }) => {
   return (
-    <ScrollView>
-      <View style={styles.container}>
+    <ScrollView contentContainerStyle={styles.container}>
+      <View>
       <Text
       style={{
         marginTop: 20,
@@ -61,7 +61,7 @@ const OnboardingFourth = ({ navigation }) => {
         }}
         inactiveDotOpacity={0.4}
         inactiveDotScale={0.6}
-        tappableDots={true}
+        tappableDots={false}
       />
     <Button
     type="solid"
@@ -73,7 +73,6 @@ const OnboardingFourth = ({ navigation }) => {
     width: 300, 
     alignContent: 'center',
     margin: 0,
-    flex: 1,
     marginTop:10,
     paddingLeft:0,
     marginLeft: 30,
@@ -87,13 +86,12 @@ const OnboardingFourth = ({ navigation }) => {
   );
 }
 const styles = StyleSheet.create({
-    container: {
-  
-      flex: 1,
-      backgroundColor: '#fff',
-      alignItems: 'center',
-      justifyContent: 'center',
-    },
+  container: {
+    height: 750,
+    backgroundColor: 'white',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
   });
 
 export default OnboardingFourth

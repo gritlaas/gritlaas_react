@@ -15,7 +15,7 @@ public class MainActivity extends ReactActivity {
    */
   @Override
   protected String getMainComponentName() {
-    return "grit_cli";
+    return "GritStudies";
   }
 
   // for react-native-screens

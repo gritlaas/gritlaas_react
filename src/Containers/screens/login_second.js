@@ -12,7 +12,7 @@ const LoginSecond = ({navigation}) => {
     const [text, onChangeText] = React.useState(null);
     const [password, onChangePassword] = React.useState(null);
   return (
-    <ScrollView>
+    <ScrollView contentContainerStyle={styles.container}>
     <ScrollView horizontal>
         <View>
             <Image
@@ -130,7 +130,7 @@ const LoginSecond = ({navigation}) => {
     width: 300, 
     margin: 0,
     flex: 1,
-    marginTop:10,
+    marginTop:20,
     paddingLeft:0,
     marginLeft: 30,
     backgroundColor: "white",
@@ -142,7 +142,7 @@ const LoginSecond = ({navigation}) => {
     </Button>
     <Button
     type="outline"
-    icon={ <Icon name="logo-apple" size={20} ></Icon>}
+    icon={ <Icon name="logo-apple" size={20} color="black" ></Icon>}
     titleStyle={{ color: "#0B774B", fontSize:15, margin:5 }} 
     buttonStyle =
     {{
@@ -151,6 +151,7 @@ const LoginSecond = ({navigation}) => {
     margin: 0,
     flex: 1,
     marginTop:10,
+    paddingTop: 2,
     paddingLeft: 0,
     marginLeft: 30,
     backgroundColor: "white",
@@ -189,7 +190,7 @@ const LoginSecond = ({navigation}) => {
     width={1}
     style={{ width:"100%", marginTop: 15 }}
     />
-    <Text style = {{color:"#0B774B", textAlign: "center", marginTop: 10}}>Already a member?
+    <Text style = {{color:"#0B774B", textAlign: "center", marginTop: 10 , height: 50}}>Already a member?
     <Text style = {{color:"#FF6E15", textAlign: "center"}}> Sign in</Text></Text>
     </ScrollView>
   );
@@ -200,8 +201,7 @@ const styles = StyleSheet.create({
         fontFamily: "Roboto"
     },
     container: {
-      flex: 1,
-      padding: 20
+      backgroundColor: "white"
     },
     input: {
         height: 50,

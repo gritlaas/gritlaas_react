@@ -15,9 +15,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "13B07F861A680F5B00A75B9A"
-               BuildableName = "grit_cli.app"
-               BlueprintName = "grit_cli"
-               ReferencedContainer = "container:grit_cli.xcodeproj">
+               BuildableName = "GritStudies.app"
+               BlueprintName = "GritStudies"
+               ReferencedContainer = "container:GritStudies.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -33,9 +33,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "00E356ED1AD99517003FC87E"
-               BuildableName = "grit_cliTests.xctest"
-               BlueprintName = "grit_cliTests"
-               ReferencedContainer = "container:grit_cli.xcodeproj">
+               BuildableName = "GritStudiesTests.xctest"
+               BlueprintName = "GritStudiesTests"
+               ReferencedContainer = "container:GritStudies.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>
@@ -55,9 +55,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "13B07F861A680F5B00A75B9A"
-            BuildableName = "grit_cli.app"
-            BlueprintName = "grit_cli"
-            ReferencedContainer = "container:grit_cli.xcodeproj">
+            BuildableName = "GritStudies.app"
+            BlueprintName = "GritStudies"
+            ReferencedContainer = "container:GritStudies.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </LaunchAction>
@@ -72,9 +72,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "13B07F861A680F5B00A75B9A"
-            BuildableName = "grit_cli.app"
-            BlueprintName = "grit_cli"
-            ReferencedContainer = "container:grit_cli.xcodeproj">
+            BuildableName = "GritStudies.app"
+            BlueprintName = "GritStudies"
+            ReferencedContainer = "container:GritStudies.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>

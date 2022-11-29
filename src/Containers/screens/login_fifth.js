@@ -14,7 +14,7 @@ const LoginFifth = ({ navigation }) => {
     const [password, onChangePassword] = React.useState(null);
     const [confirmPassword, onChangeConfirmPassword] = React.useState(null);
   return (
-    <ScrollView>
+    <ScrollView contentContainerStyle={styles.container}>
     <ScrollView horizontal>
         <View>
             <Image
@@ -146,7 +146,7 @@ const LoginFifth = ({ navigation }) => {
     width={1}
     style={{ width:"100%", marginTop: 200 }}
     />
-    <Text style = {{color:"#0B774B", textAlign: "center", marginTop: 10}}>Back to
+    <Text style = {{color:"#0B774B", textAlign: "center", marginTop: 10, height: 80}}>Back to
     <Text style = {{color:"#FF6E15", textAlign: "center"}}> Sign in</Text></Text>
     </ScrollView>
   );
@@ -157,8 +157,7 @@ const styles = StyleSheet.create({
         fontFamily: "Roboto"
     },
     container: {
-      flex: 1,
-      padding: 20
+      backgroundColor : "white"
     },
     input: {
         height: 57,

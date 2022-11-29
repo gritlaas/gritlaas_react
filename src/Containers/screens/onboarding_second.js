@@ -6,8 +6,8 @@ import { Pagination } from 'react-native-snap-carousel'
 
 const OnboardingSecond = ({navigation}) => {
   return (
-    <ScrollView>
-      <View style={styles.container}>
+    <ScrollView contentContainerStyle={styles.container}>
+      <View>
       <Text
       style={{
         marginTop: 20,
@@ -58,7 +58,7 @@ const OnboardingSecond = ({navigation}) => {
         }}
         inactiveDotOpacity={0.4}
         inactiveDotScale={0.6}
-        tappableDots={true}
+        tappableDots={false}
       />
       <Icon
       style ={{
@@ -82,13 +82,13 @@ const OnboardingSecond = ({navigation}) => {
   );
 }
 const styles = StyleSheet.create({
-    container: {
-  
-      flex: 1,
-      backgroundColor: '#fff',
-      alignItems: 'center',
-      justifyContent: 'center',
-    },
+  container: {
+    flex: 1,
+    height: 700,
+    backgroundColor: 'white',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
   });
 
 export default OnboardingSecond;

@@ -15,10 +15,10 @@ export default function ({ Colors, ...args }) {
     button: buttonStyles({ Colors, ...args }),
     ...StyleSheet.create({
       backgroundPrimary: {
-        backgroundColor: Colors.primary,
+        backgroundColor: Colors.white,
       },
       backgroundReset: {
-        backgroundColor: Colors.transparent,
+        backgroundColor: Colors.white,
       },
       textInput: {
         borderWidth: 1,

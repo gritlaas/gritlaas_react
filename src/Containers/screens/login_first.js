@@ -14,7 +14,7 @@ const LoginFirst = ({ navigation }) => {
     const [text, onChangeText] = React.useState(null);
     const [password, onChangePassword] = React.useState(null);
   return (
-    <ScrollView>
+    <ScrollView contentContainerStyle={styles.container}>
     <ScrollView horizontal>
         <View>
             <Image
@@ -145,17 +145,16 @@ const LoginFirst = ({ navigation }) => {
     titleStyle={{ color: "#0B774B", fontSize:15, marginLeft: 5 }} 
     buttonStyle =
     {{
-    height: 50,
-    width: 300, 
-    alignContent: 'center',
-    margin: 0,
-    flex: 1,
-    marginTop:10,
-    paddingLeft:0,
-    marginLeft: 30,
-    backgroundColor: "white",
-    borderRadius: 12,
-    borderColor: "#0B774B"
+      height: 50,
+      width: 300, 
+      margin: 0,
+      flex: 1,
+      marginTop:15,
+      paddingLeft:0,
+      marginLeft: 30,
+      backgroundColor: "white",
+      borderRadius: 12,
+      borderColor: "#0B774B"
     }}
     >
         Continue with Google
@@ -172,7 +171,7 @@ const LoginFirst = ({ navigation }) => {
     alignContent: 'center',
     margin: 0,
     flex: 1,
-    marginTop:10,
+    marginTop:15,
     paddingLeft:0,
     marginLeft: 30,
     backgroundColor: "white",
@@ -192,7 +191,7 @@ const LoginFirst = ({ navigation }) => {
       width: 300, 
       margin: 0,
       flex: 1,
-      marginTop:10,
+      marginTop:15,
       marginLeft: 30,
       paddingLeft: 30,
       backgroundColor: "white",
@@ -208,7 +207,7 @@ const LoginFirst = ({ navigation }) => {
     width={1}
     style={{ width:"100%", marginTop: 15 }}
     />
-    <Text style = {{color:"#0B774B", textAlign: "center", marginTop: 10}}>Not a member yet?
+    <Text style = {{color:"#0B774B", textAlign: "center", marginTop: 10, height: 50}}>Not a member yet?
     <Text style = {{color:"#FF6E15", textAlign: "center"}}> Join now</Text></Text>
     </ScrollView>
   );
@@ -219,8 +218,7 @@ const styles = StyleSheet.create({
         fontFamily: "Roboto"
     },
     container: {
-      flex: 1,
-      padding: 20
+      backgroundColor: 'white',
     },
     input: {
         height: 50,

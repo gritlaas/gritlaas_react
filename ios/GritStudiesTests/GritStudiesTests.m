@@ -7,11 +7,11 @@
 #define TIMEOUT_SECONDS 600
 #define TEXT_TO_LOOK_FOR @"Welcome to React"
 
-@interface grit_cliTests : XCTestCase
+@interface GritStudiesTests : XCTestCase
 
 @end
 
-@implementation grit_cliTests
+@implementation GritStudiesTests
 
 - (BOOL)findSubviewInView:(UIView *)view matching:(BOOL (^)(UIView *view))test
 {
