@@ -1,11 +1,13 @@
 import React from 'react';
 import { StyleSheet } from 'react-native';
+import HomeCategories from './Containers/screens/home_categories';
 import Navigation from './Navigators/route';
 
 
 const App = () => {
   return (
-    <Navigation/>
+    // <Navigation/>
+    <HomeCategories></HomeCategories>
   );
 }
 
