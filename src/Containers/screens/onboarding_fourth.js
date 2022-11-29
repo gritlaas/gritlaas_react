@@ -38,7 +38,6 @@ const OnboardingFourth = ({ navigation }) => {
         style={{
           marginTop: 20,
           width: 300,
-          paddingLeft: 55,
           textAlign: "center",
           fontSize: 15,
           color:"#747474"

@@ -37,7 +37,6 @@ const OnboardingFirst = ({navigation}) => {
         style={{
           marginTop: 20,
           width: 300,
-          paddingLeft: 60,
           textAlign: "center",
           fontSize: 15,
           color:"#747474"
