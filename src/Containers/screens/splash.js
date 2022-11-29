@@ -2,7 +2,10 @@ import React from 'react';
 import { StyleSheet, Text, View, Image, ScrollView, TextInput } from 'react-native';
 
 
-const Splash = () => {
+const Splash = ({ navigation }) => {
+  setTimeout(() => {
+    navigation.navigate('LoginFirst'); //this.props.navigation.navigate('Login')
+}, 1000);
   return (
     <ScrollView>
       <View style={styles.container}>
@@ -50,9 +53,8 @@ const Splash = () => {
 }
 const styles = StyleSheet.create({
     container: {
-  
       flex: 1,
-      backgroundColor: '#fff',
+      backgroundColor: 'white',
       alignItems: 'center',
       justifyContent: 'center',
     },

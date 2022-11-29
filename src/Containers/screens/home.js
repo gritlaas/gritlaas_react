@@ -6,7 +6,7 @@ import * as Progress from 'react-native-progress';
 import { Button } from '@rneui/base';
 
 
-const Home = () => {
+const Home = ({ navigation }) => {
     var width = Dimensions.get('window').width; //full width
     var height = Dimensions.get('window').height; //full height
     

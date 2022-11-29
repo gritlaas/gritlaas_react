@@ -7,7 +7,7 @@ import * as Progress from 'react-native-progress';
 import { Button, Dialog, Divider } from '@rneui/base';
 
 
-const LoginSixth = () => {
+const LoginSixth = ({ navigation }) => {
     var width = Dimensions.get('window').width; //full width
     var height = Dimensions.get('window').height; //full height
     const [text, onChangeText] = React.useState(null);
@@ -119,6 +119,7 @@ const LoginSixth = () => {
     backgroundColor: "#0B774B",
     borderRadius: 12
     }}
+    onPress = {() => { navigation.navigate('Home') }}
     >
         Okay
     </Button>

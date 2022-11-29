@@ -11,9 +11,14 @@ import OnboardingFirst from '@/Containers/screens/onboarding_first';
 import OnboardingSecond from '@/Containers/screens/onboarding_second';
 import OnboardingThird from '@/Containers/screens/onboarding_third';
 import OnboardingFourth from '@/Containers/screens/onboarding_fourth';
+import Splash from '@/Containers/screens/splash';
+import Home from '@/Containers/screens/home';
 
 
 const screens = {
+    Splash : {
+        screen : Splash
+    },
     Onboarding_First : {
         screen : OnboardingFirst
     },
@@ -44,6 +49,9 @@ const screens = {
     LoginSixth : {
         screen : LoginSixth
     },
+    Home : {
+        screen : Home
+    }
 }
 const LoginStack = createStackNavigator(screens);
 
