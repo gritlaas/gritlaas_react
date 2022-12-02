@@ -65,7 +65,7 @@ const Group = ({ navigation }) => {
     <Button
     type="solid"
     titleStyle={{ color: "white", fontSize:15 }}
-    onPress = {() => Linking.openURL('https://classroom.google.com/c/NTQ5NTcxMDgwMjA1')}
+    onPress = {() => Linking.openURL('https://classroom.google.com/c/NTA4MDk0ODQ1MDgx?cjc=caq4u7u')}
     buttonStyle =
     {{
     height: 50,
