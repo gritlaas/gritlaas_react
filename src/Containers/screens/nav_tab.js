@@ -11,9 +11,9 @@ const NavTab = () => {
     return (
         <NavigationContainer>
     <Tab.Navigator initialRouteName="Feed" activeColor="#30F2B3" inactiveColor="black" barStyle={{ backgroundColor: 'white', marginTop: 290 }}>
-      <Tab.Screen 
-      name="Home" 
-      component={Home} 
+      <Tab.Screen
+      name="Home"
+      component={Home}
       options={{
         tabBarLabel: 'Home',
         tabBarIcon: ({ color }) => (

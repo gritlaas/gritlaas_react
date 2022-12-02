@@ -13,6 +13,7 @@ import LoginFifth from '@/Containers/screens/login_fifth';
 import LoginSixth from '@/Containers/screens/login_sixth';
 import Splash from '@/Containers/screens/splash';
 import Home from '@/Containers/screens/home';
+import Group from '@/Containers/screens/group';
 
 
 const screens = {
@@ -49,6 +50,13 @@ const screens = {
     },
     Onboarding_Fourth : {
         screen : OnboardingFourth,
+        navigationOptions: { 
+            headerShown: false,
+            backgroundColor: 'white'
+         }
+    },
+    Group : {
+        screen : Group,
         navigationOptions: { 
             headerShown: false,
             backgroundColor: 'white'
