@@ -11,7 +11,7 @@ const OnboardingFourth = ({ navigation }) => {
       <View>
       <Text
       style={{
-        marginTop: 20,
+        marginTop:-5,
         paddingLeft: 70,
         color: '#0B774B',
         fontSize: 15,
@@ -22,21 +22,22 @@ const OnboardingFourth = ({ navigation }) => {
       </Text>
       <Image
           source={require('../../Assets/Images/girl_2.png')}
-          style={{ width: 300, height: 300, marginTop: 30 }}
+          style={{ width: 300, height: 300, marginTop: 0 }}
         />
       </View>
       <Text
         style={{
-          marginTop: 20,
+          marginTop: 10,
           textAlign: "center",
           fontSize: 20,
-          fontWeight: "bold"
+          fontWeight: "bold",
+          color: "#3C3C3C"
         }}
       >Empowering Educators
       </Text>
       <Text
         style={{
-          marginTop: 20,
+          marginTop: 10,
           width: 300,
           textAlign: "center",
           fontSize: 15,
@@ -55,8 +56,7 @@ const OnboardingFourth = ({ navigation }) => {
           height: 10,
           borderRadius: 5,
           marginHorizontal: 0,
-          backgroundColor: '#0B774B',
-          marginTop: 10
+          backgroundColor: '#0B774B'
         }}
         inactiveDotOpacity={0.4}
         inactiveDotScale={0.6}
@@ -72,7 +72,6 @@ const OnboardingFourth = ({ navigation }) => {
     width: 300, 
     alignContent: 'center',
     margin: 0,
-    marginTop:10,
     paddingLeft:0,
     marginLeft: 30,
     backgroundColor: "#0B774B",

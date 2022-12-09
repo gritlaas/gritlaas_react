@@ -75,7 +75,7 @@ const OnboardingThird = ({navigation}) => {
       name= 'right'
       size={30}
       color="white"
-      onPress = {() => navigation.navigate('Group')}>
+      onPress = {() => navigation.navigate('Onboarding_Fourth')}>
       </Icon>
     </ScrollView>
   );
