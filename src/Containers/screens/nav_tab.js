@@ -9,28 +9,28 @@ const Tab = createMaterialBottomTabNavigator();
 
 const NavTab = () => {
     return (
-        <NavigationContainer>
-    <Tab.Navigator initialRouteName="Feed" activeColor="#30F2B3" inactiveColor="black" barStyle={{ backgroundColor: 'white', marginTop: 290 }}>
-      <Tab.Screen
-      name="Home"
-      component={Home}
-      options={{
-        tabBarLabel: 'Home',
-        tabBarIcon: ({ color }) => (
-          <MaterialCommunityIcons name="home" color={color} size={26}/>
-        ),
-      }}
-      />
-      <Tab.Screen 
-      name="  " 
-      component={LoginFirst} 
-      options={{
-        tabBarIcon: ({ color }) => (
-          <MaterialCommunityIcons name="heart" color={color} size={26}/>
-        ),
-      }}
-      color ={'black'}
-      />
+    <NavigationContainer style={{position: 'absolute', left: 0, right: 0, bottom: 0}}>
+      <Tab.Navigator initialRouteName="Feed" activeColor="#30F2B3" inactiveColor="black" barStyle={{ backgroundColor: 'white', marginTop:400 }}>
+        <Tab.Screen
+        name="Home"
+        component={Home}
+        options={{
+          tabBarLabel: 'Home',
+          tabBarIcon: ({ color }) => (
+            <MaterialCommunityIcons name="home" color={color} size={26}/>
+          ),
+        }}
+        />
+        <Tab.Screen 
+        name="  " 
+        component={LoginFirst} 
+        options={{
+          tabBarIcon: ({ color }) => (
+            <MaterialCommunityIcons name="heart" color={color} size={26}/>
+          ),
+        }}
+        color ={'black'}
+        />
       <Tab.Screen 
       name=" "
       component={LoginFirst} 

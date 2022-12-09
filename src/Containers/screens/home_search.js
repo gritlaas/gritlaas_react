@@ -4,7 +4,8 @@ import Icon from 'react-native-vector-icons/Ionicons';
 import { Card, SearchBar } from '@rneui/themed';
 import * as Progress from 'react-native-progress';
 import { Button } from '@rneui/base';
-import NavTab from '../screens/nav_tab'
+import NavTab from '../screens/nav_tab';
+import { Button_Name }  from '../../Constants/Button_Name';
 
 
 const HomeSearch = ({ navigation }) => {
@@ -20,19 +21,22 @@ const HomeSearch = ({ navigation }) => {
     containerStyle= {{ backgroundColor:"#27BC7F", margin: 0, padding:0}}
     >
     <Card
-        width= {30}
-        height = {30}
-        borderRadius = {10}
-        containerStyle= {{
-        padding :0,
-        marginTop : 8,
-        left : 0,
-        width: 30
-        }}>
-        <Icon name="chevron-back-outline" size={27} color="black"></Icon>
+    width= {30}
+    height = {30}
+    borderRadius = {10}
+    containerStyle= {{
+    padding :0,
+    marginTop : 8,
+    left : 0,
+    width: 30
+    }}>
+    <Icon name="chevron-back-outline" size={27} color="black"></Icon>
+    </Card>
+    <Text style={{color:"white", marginLeft: 60, marginTop:-25, fontSize: 16}}>Courses</Text>
       </Card>
+      <View flexDirection="row">
       <SearchBar
-          placeholder="Looking for a course?"
+          placeholder="Search"
           platform = "android"
           lightTheme = {true}
           round = {true}
@@ -44,127 +48,39 @@ const HomeSearch = ({ navigation }) => {
               color: "#0B774B",
               backgroundColor: "#DCFFF1",
               borderRadius: 5,
-              width: 290,
+              width: 320,
               height:40,
-              marginTop: -30,
+              marginTop: 10,
               marginLeft:20,
               borderWidth: 0
           }}
-          inputContainerStyle={{ height: 25, width: 290 }}
+          inputContainerStyle={{ height: 25, width: 300 }}
           ></SearchBar>
-      <Text style={{color:"white", marginLeft: 60, marginTop:-25, fontSize: 16}}>Top Searches</Text>
-       <ScrollView horizontal style={{ marginTop:10 }}>
-           <View>
-           <Button type="outline"
-           titleStyle={{ color: "#0B774B", fontSize:12 }}
-           icon={{ size: 15 }}
-           buttonStyle =
-           {{
-           height: 35,
-           alignContent: 'center',
-           margin: 0,
-           flex: 1,
-           marginTop:5,
-           paddingLeft:0,
-           marginLeft: 20,
-           borderColor: "#0B774B",
-           borderRadius: 12
-           }}
-           >NEET and  JEE coaching</Button>
-               </View>
-               <View>
-               <Button type="outline"
-           style={{ flex: 1 }}
-           titleStyle={{ color: "#0B774B", fontSize:12  }}
-           icon={{ size: 15 }}
-           buttonStyle =
-           {{
-           height: 35,
-           flex: 2,
-           alignContent: 'center',
-           marginLeft: 10,
-           marginTop:5,
-           paddingLeft:0,
-           borderColor: "#0B774B",
-           borderRadius: 12
-           }}
-           >UPSC AND TNPSC</Button>
-               </View>
-               <View>
-               <Button type="outline"
-           style={{ flex: 1 }}
-           titleStyle={{ color: "#0B774B", fontSize:12  }}
-           icon={{ size: 15 }}
-           buttonStyle =
-           {{
-           height: 35,
-           flex: 2,
-           alignContent: 'center',
-           marginLeft: 10,
-           marginTop:5,
-           paddingLeft:0,
-           borderColor: "#0B774B",
-           borderRadius: 12
-           }}
-           >LEADERSHIP</Button>
-               </View>
-           </ScrollView>
-               <ScrollView horizontal>
-               <View>
-               <Button type="outline"
-           style={{ flex: 1 }}
-           titleStyle={{ color: "#0B774B", fontSize:12  }}
-           icon={{ size: 15 }}
-           buttonStyle =
-           {{
-           height: 35,
-           flex: 2,
-           alignContent: 'center',
-           marginLeft: 20,
-           marginTop:5,
-           paddingLeft:0,
-           borderColor: "#0B774B",
-           borderRadius: 12
-           }}
-           >IT SOFTWARE COURSES</Button>
-               </View>
-               <View>
-               <Button type="outline"
-           titleStyle={{ color: "#0B774B", fontSize:12  }}
-           icon={{ size: 15 }}
-           buttonStyle =
-           {{
-           height: 35,
-           alignContent: 'center',
-           margin: 5,
-           flex: 1,
-           paddingLeft:0,
-           marginLeft: 10,
-           borderColor: "#0B774B",
-           borderRadius: 12
-           }}
-           >BANK COACHING</Button>
-               </View>
-               <View>
-           <Button type="outline"
-           style={{ flex: 1 }}
-           titleStyle={{ color: "#0B774B", fontSize:12 }}
-           icon={{ size: 15 }}
-           buttonStyle =
-           {{
-           height: 35,
-           flex: 2,
-           alignContent: 'center',
-           margin: 5,
-           paddingLeft:0,
-           borderColor: "#0B774B",
-           borderRadius: 12
-           }}
-           >DevOps and software engineering</Button>
-               </View>
-           </ScrollView>
-    </Card>
-    <NavTab marginTop= {700}></NavTab>
+          <Icon name="filter" size={20} style={{ marginTop:20, marginLeft: 30, color: "#0B774B" }}></Icon>
+          </View>
+      <Text style={{color:"#343434", marginLeft: 30, marginTop:10, fontSize: 14}}>Top Searches</Text>
+        <View flexDirection="row" flexWrap="wrap" marginLeft={20}>
+        {
+        Button_Name.map((item, key)=>(
+            <Button type="outline"
+            key = {key}
+            titleStyle={{ color: "#343434", fontSize:12 }}
+            buttonStyle =
+            {{
+            height: 29,
+            alignContent: 'center',
+            flex: 1,
+            marginTop:10,
+            padding:5,
+            marginLeft:10,
+            color:'#343434',
+            borderColor: "#0B774B",
+            borderRadius: 8
+            }}> {item} </Button>
+        ))
+        }
+        </View>
+    <NavTab></NavTab>
   </ScrollView>
   );
 }

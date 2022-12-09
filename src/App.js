@@ -1,14 +1,18 @@
 import React from 'react';
 import { StyleSheet } from 'react-native';
-import HomeCategories from './Containers/screens/home_categories';
+import Home from './Containers/screens/home';
 import Navigation from './Navigators/route';
-import Group from './Containers/screens/group'
+import Group from './Containers/screens/group';
+import HomeSearch from './Containers/screens/home_search';
+import HomeSearchResult from './Containers/screens/home_search_result';
 
 
 const App = () => {
   return (
     <Navigation/>
     // <HomeCategories></HomeCategories>
+    // <Home></Home>
+    // <HomeSearchResult></HomeSearchResult>
   );
 }
 

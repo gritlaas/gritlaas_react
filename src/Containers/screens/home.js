@@ -4,6 +4,9 @@ import Icon from 'react-native-vector-icons/Ionicons';
 import { Card, SearchBar } from '@rneui/themed';
 import * as Progress from 'react-native-progress';
 import { Button } from '@rneui/base';
+import { EducatorDetails } from "../../Constants/Educators"
+import { CoursesDetails } from "../../Constants/Courses"
+import NavTab from '../screens/nav_tab'
 
 
 const Home = ({ navigation }) => {
@@ -14,13 +17,13 @@ const Home = ({ navigation }) => {
     <ScrollView>
     <Card 
     width= {width}
-    height = {200}
+    height = {160}
     borderRadius = {5}
     containerStyle= {{ backgroundColor:"#27BC7F", margin: 0, padding:0}}
     >
     <Card.Image
         source={require('../../Assets/Images/avatar.png')}
-        style={{ width: 50, height: 50, borderRadius: 100, marginTop: 70, marginLeft: 20}}
+        style={{ width: 50, height: 50, borderRadius: 100, marginTop: 40, marginLeft: 20}}
     >
     </Card.Image>
     <Text style={{color:"white", marginLeft: 80, marginTop:-50, fontSize: 14}}>Hello!</Text>
@@ -32,7 +35,7 @@ const Home = ({ navigation }) => {
     containerStyle= {{ 
     padding :0,
     top : -50,
-    left : 280,
+    left : 330,
     width: 30
     }}>
     <Icon name="notifications-outline" size={27} ></Icon>
@@ -50,7 +53,7 @@ const Home = ({ navigation }) => {
         color: "#0B774B",
         backgroundColor: "#DCFFF1",
         borderRadius: 5,
-        width: 290,
+        width: "75%",
         height:40,
         marginTop: -30,
         marginLeft:20,
@@ -60,11 +63,11 @@ const Home = ({ navigation }) => {
     ></SearchBar>
     </Card>
     
-    <Text style = {{color:"#343434", marginTop: 30, marginLeft: 30}}>
+    <Text style = {{color:"#343434", marginTop: 20, marginLeft: 30}}>
         Continue Learning
     </Text>
     <Card
-    width= {300}
+    width= "85%"
     height = {100}
     borderRadius = {10}
     containerStyle= {{ padding :10, paddingLeft:20, backgroundColor:"#96F2D4", marginLeft:30}}>
@@ -194,11 +197,11 @@ const Home = ({ navigation }) => {
     >DevOps and software engineering</Button>
         </View>
     </ScrollView>
-    <View style={{flexDirection: "row", width: 700}}>
-    <Text style = {{color:"#343434", marginTop: 20, marginLeft: 30, flex:1}}>
+    <View style={{flexDirection: "row", width: 750}}>
+    <Text style = {{color:"#343434", marginTop: 10, marginLeft: 30, flex:1}}>
         Recommended Course For You
     </Text>
-    <Text style = {{color:"orange", marginTop: 20, paddingLeft: 60, flex:2}}>
+    <Text style = {{color:"orange", marginTop: 10, paddingLeft: 90, flex:2}}>
         See all
     </Text>
     </View>
@@ -207,164 +210,90 @@ const Home = ({ navigation }) => {
     horizontal
     disableIntervalMomentum={ true } 
     snapToInterval={ width }
-    style={{marginTop: 10}}>
-    <View>
-    <Card
-    width= {200}
-    height = {100}
-    borderRadius = {10}
-    containerStyle= {{backgroundColor:"#96F2D4", padding:0, marginLeft:30}}>
-    <Card.Image
-    source={require('../../Assets/Images/react.jpeg')}
-    style={{ width: 100, height: 100, borderRadius: 10, marginLeft: 0, padding:0}}
+    marginLeft = {20}
     >
-    <Text 
-    style={{
-         width: 90,
-         marginLeft: 105, 
-        fontSize: 13, top: 5, fontWeight: "bold"}}>Advanced React Course</Text>
-    <Text 
-    style={{
-         width: 90,
-         marginLeft: 105,
-         fontSize: 10, marginTop: 9}}>Google</Text>
-    </Card.Image>
-    <View style={{flexDirection:'row', flexWrap:'wrap'}}>
-    <Icon name='star' style={{ marginLeft:110, marginTop: -27, color:"#FFC107", flex:1}}></Icon>
-    <Icon name='star' style={{ marginLeft:2, marginTop: -27, color:"#FFC107", flex:2}}></Icon>
-    <Icon name='star' style={{ marginLeft:-15, marginTop: -27, color:"#FFC107", flex:3}}></Icon>
-    </View>
-    </Card>
-    </View>
-    <View>
-    <Card
-    width= {200}
-    height = {100}
-    borderRadius = {10}
-    containerStyle= {{backgroundColor:"#96F2D4", marginLeft:0, padding:0}}>
-    <Card.Image
-    source={require('../../Assets/Images/react.jpeg')}
-    style={{ width: 100, height: 100, borderRadius: 10, marginLeft: 0, padding:0}}
-    >
-    <Text 
-    style={{
-         width: 90,
-         marginLeft: 105, 
-        fontSize: 13, top: 5, fontWeight: "bold"}}>Advanced React Course</Text>
-    <Text 
-    style={{
-         width: 90,
-         marginLeft: 105,
-         fontSize: 10, marginTop: 9}}>Google</Text>
-    </Card.Image>
-    <View style={{flexDirection:'row', flexWrap:'wrap'}}>
-    <Icon name='star' style={{ marginLeft:110, marginTop: -27, color:"#FFC107", flex:1}}></Icon>
-    <Icon name='star' style={{ marginLeft:2, marginTop: -27, color:"#FFC107", flex:2}}></Icon>
-    <Icon name='star' style={{ marginLeft:-15, marginTop: -27, color:"#FFC107", flex:3}}></Icon>
-    </View>
-    </Card>
-    </View>
+    {
+    CoursesDetails.map((items, key)=>(
+        <View>
+            <Card
+            key = {key}
+            width= {200}
+            height = {100}
+            borderRadius = {10}
+            containerStyle= {{backgroundColor:"#96F2D4", padding:0, marginLeft:5}}>
+            <Card.Image
+            source={items.img}
+            style={{ width: 100, height: 100, borderRadius: 10, marginLeft: 0, padding:0}}
+            >
+            <Text 
+            style={{
+                 width: 90,
+                 marginLeft: 105, 
+                fontSize: 13, top: 5, fontWeight: "bold"}}>{items.course_name}</Text>
+            <Text 
+            style={{
+                 width: 90,
+                 marginLeft: 105,
+                 fontSize: 10, marginTop: 9}}>{items.published_by}</Text>
+            </Card.Image>
+            <View style={{flexDirection:'row', flexWrap:'wrap', marginLeft: 100}}>
+            {
+            items.rating.map((item,key)=>(
+            <Icon key ={key} name='star' style={{ marginLeft:10, marginTop: -27, color:"#FFC107"}}></Icon>
+            ))
+            }
+            </View>
+            </Card>
+            </View>
+            ))}
+   
     </ScrollView>
 
     <View style={{flexDirection: "row", width: 700}}>
-    <Text style = {{color:"#343434", marginTop: 30, marginLeft: 30, flex:1}}>
+    <Text style = {{color:"#343434", marginTop: 20, marginLeft: 30, flex:1}}>
         Our Best Instructors
     </Text>
-    <Text style = {{color:"orange", marginTop: 30, paddingLeft: 60, flex:2}}>
+    <Text style = {{color:"orange", marginTop: 20, paddingLeft: 105, flex:2}}>
         See all
     </Text>
     </View>
     <ScrollView 
     horizontal
     disableIntervalMomentum={ true } 
-    snapToInterval={ width }>
-    <View style={{marginTop:10}}>
+    snapToInterval={ width }
+    >
+    {
+        EducatorDetails.map((items,key)=>(
+    <View style={{marginTop:10}} key = {key}>
     <Card.Image
-    source={require('../../Assets/Images/tutor.png')}
+    source= {items.img}
     style={{ width: 80, height: 80, borderRadius: 100, marginLeft: 30}}
     >
     </Card.Image>
     <View style={{flexDirection:'column'}}>
     <Text 
     style={{
-         width: 90,
-         marginLeft: 50, 
-        fontSize: 13, top: 5, fontWeight: "bold", flex: 1}}>Robert</Text>
+         marginLeft: 35, 
+        fontSize: 13, top: 5, fontWeight: "bold", flex: 1}}>{items.name}</Text>
     <Text
     style={{
-         width: 90,
          fontSize: 9,
          top: 5,
          marginLeft: 35,
          color: 'grey',
          flex: 2
-         }}>Software Engineer II</Text>
-    <View style={{flexDirection:'row', flexWrap:'wrap', marginTop:5}}>
-        <Icon name='star' style={{ marginLeft:35, color:"#FFC107", flex:1}}></Icon>
-        <Icon name='star' style={{ marginLeft:0, color:"#FFC107", flex:2}}></Icon>
-        <Icon name='star' style={{ marginLeft:-15, color:"#FFC107", flex:3}}></Icon>
+         }}>{items.info}</Text>
+    <View style={{flexDirection:'row', flexWrap:'wrap', marginTop:5, marginLeft: 35}}>
+        {
+        items.rating.map((item,key)=>(
+            <Icon key ={key} name='star' style={{ marginLeft:0, color:"#FFC107", flex:1}}></Icon>
+        ))
+        }
+        </View>
+        </View>
     </View>
-    </View>
-    </View>
-
-    <View style={{marginTop:10}}>
-    <Card.Image
-    source={require('../../Assets/Images/tutor.png')}
-    style={{ width: 80, height: 80, borderRadius: 100, marginLeft: 30}}
-    >
-    </Card.Image>
-    <View style={{flexDirection:'column'}}>
-    <Text 
-    style={{
-         width: 90,
-         marginLeft: 50, 
-        fontSize: 13, top: 5, fontWeight: "bold", flex: 1}}>Robert</Text>
-    <Text
-    style={{
-         width: 90,
-         fontSize: 9,
-         top: 5,
-         marginLeft: 35,
-         color: 'grey',
-         flex: 2
-         }}>Software Engineer II</Text>
-    <View style={{flexDirection:'row', flexWrap:'wrap', marginTop:5}}>
-        <Icon name='star' style={{ marginLeft:35, color:"#FFC107", flex:1}}></Icon>
-        <Icon name='star' style={{ marginLeft:0, color:"#FFC107", flex:2}}></Icon>
-        <Icon name='star' style={{ marginLeft:-15, color:"#FFC107", flex:3}}></Icon>
-    </View>
-    </View>
-    </View>
-
-    <View style={{marginTop:10}}>
-    <Card.Image
-    source={require('../../Assets/Images/tutor.png')}
-    style={{ width: 80, height: 80, borderRadius: 100, marginLeft: 30}}
-    >
-    </Card.Image>
-    <View style={{flexDirection:'column'}}>
-    <Text 
-    style={{
-         width: 90,
-         marginLeft: 50, 
-        fontSize: 13, top: 5, fontWeight: "bold", flex: 1}}>Robert</Text>
-    <Text
-    style={{
-         width: 90,
-         fontSize: 9,
-         top: 5,
-         marginLeft: 35,
-         color: 'grey',
-         flex: 2,
-         fontFamily: 'Roboto'
-         }}>Software Engineer II</Text>
-    <View style={{flexDirection:'row', flexWrap:'wrap', marginTop:5}}>
-        <Icon name='star' style={{ marginLeft:35, color:"#FFC107", flex:1}}></Icon>
-        <Icon name='star' style={{ marginLeft:0, color:"#FFC107", flex:2}}></Icon>
-        <Icon name='star' style={{ marginLeft:-15, color:"#FFC107", flex:3}}></Icon>
-    </View>
-    </View>
-    </View>
+     ))
+    }
     </ScrollView>
     </ScrollView>
   );
