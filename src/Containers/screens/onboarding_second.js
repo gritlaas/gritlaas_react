@@ -20,7 +20,7 @@ const OnboardingSecond = ({navigation}) => {
       >Skip
       </Text>
       <Image
-          source={require('../../Assets/Images/boy.png')}
+          source={require('../../Assets/Images/boy.jpeg')}
           style={{ width: 300, height: 300, marginTop: 30 }}
         />
       </View>

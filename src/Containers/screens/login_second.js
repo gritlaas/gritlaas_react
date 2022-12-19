@@ -16,7 +16,7 @@ const LoginSecond = ({navigation}) => {
     <ScrollView horizontal>
         <View>
             <Image
-             source={require('../../Assets/Images/logo.png')}
+             source={require('../../Assets/Images/logo.jpeg')}
              style={{ width: 70, height: 70, borderRadius: 100, marginTop: 70, marginLeft: 30}}>
              </Image>
         </View>
@@ -122,7 +122,7 @@ const LoginSecond = ({navigation}) => {
     
 <Button
     type="outline"
-    icon={<Image source={require("../../Assets/Images/google.png")} style={{ width: 20, height:20}}/>}
+    icon={<Image source={require("../../Assets/Images/google.jpeg")} style={{ width: 20, height:20}}/>}
     titleStyle={{ color: "#0B774B", fontSize:15, margin:5 }} 
     buttonStyle =
     {{

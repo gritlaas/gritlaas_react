@@ -22,7 +22,7 @@ const Home = ({ navigation }) => {
     containerStyle= {{ backgroundColor:"#27BC7F", margin: 0, padding:0}}
     >
     <Card.Image
-        source={require('../../Assets/Images/avatar.png')}
+        source={require('../../Assets/Images/avatar.jpeg')}
         style={{ width: 50, height: 50, borderRadius: 100, marginTop: 40, marginLeft: 20}}
     >
     </Card.Image>
@@ -214,9 +214,8 @@ const Home = ({ navigation }) => {
     >
     {
     CoursesDetails.map((items, key)=>(
-        <View>
+        <View key = {key}>
             <Card
-            key = {key}
             width= {200}
             height = {100}
             borderRadius = {10}

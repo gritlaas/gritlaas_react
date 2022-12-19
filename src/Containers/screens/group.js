@@ -21,7 +21,7 @@ const Group = ({ navigation }) => {
       >Skip
       </Text>
       <Image
-          source={require('../../Assets/Images/girl_2.png')}
+          source={require('../../Assets/Images/girl_2.jpeg')}
           style={{ width: 300, height: 300, marginTop: 30 }}
         />
       </View>
