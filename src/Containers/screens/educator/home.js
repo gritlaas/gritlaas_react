@@ -209,32 +209,40 @@ const EducatorHome = ({ navigation }) => {
     CoursesDetails.map((items, key)=>(
         <View key = {key}>
             <Card
-            width= {300}
-            height = {100}
+            width= {350}
+            height = {80}
             borderRadius = {10}
             containerStyle= {{backgroundColor:"white", padding:0, marginLeft:5}}>
             <Card.Image
             source={items.img}
-            style={{ width: 100, height: 100, borderRadius: 10, marginLeft: 0, padding:0}}
+            style={{ width: 100, height: 80, borderRadius: 10, marginLeft: 0, padding:0}}
             >
             <Text 
             style={{
                  width: 300,
                  marginLeft: 105, 
-                fontSize: 13, top: 5, fontWeight: "bold"}}>{items.course_name}</Text>
+                fontSize: 16, top: 5, fontWeight: "bold"}}>{items.course_name}</Text>
+            <View style={{display:'flex', flexDirection:'row'}}>
+            <View style={{ flex: 1}}>
             <Text 
             style={{
                  width: 90,
                  marginLeft: 105,
-                 fontSize: 10, marginTop: 9}}>{items.published_by}</Text>
+                 fontSize: 14, marginTop: 9}}>{items.published_by}</Text>
+                 </View>
+                 <View style={{ flex: 1, marginLeft: 170, marginTop: 12}}>
+                 <Icon name="time-outline" style={{
+                 width: 90,
+                 fontSize: 14}}><Text>23 Min</Text></Icon>
+                 </View>
+                <View style={{ flex: 1, marginLeft: 80, marginTop: 12}}>
+                 <Icon name="heart" style={{
+                 width: 90,
+                 fontSize: 14}}><Text>485 Likes</Text></Icon>
+                 </View>
+                 </View>
+                 <Text></Text>
             </Card.Image>
-            <View style={{flexDirection:'row', flexWrap:'wrap', marginLeft: 100}}>
-            {
-            items.rating.map((item,key)=>(
-            <Icon key ={key} name='star' style={{ marginLeft:10, marginTop: -27, color:"#FFC107"}}></Icon>
-            ))
-            }
-            </View>
             </Card>
             </View>
             ))}
