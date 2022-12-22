@@ -1,4 +1,4 @@
-export const EducatorDetails = [
+export const LearnerDetails = [
     {
         "name" : "Arul Jeyaraj",
         "img" : require("../Assets/Images/tutor_images/arul.jpeg"),
