@@ -12,6 +12,9 @@
   },
   "dependencies": {
     "@react-native-async-storage/async-storage": "^1.17.7",
+    "@react-native-firebase/app": "^16.5.0",
+    "@react-native-firebase/auth": "^16.5.0",
+    "@react-native-google-signin/google-signin": "^9.0.2",
     "@react-native-masked-view/masked-view": "^0.2.7",
     "@react-navigation/bottom-tabs": "^6.3.2",
     "@react-navigation/material-bottom-tabs": "^6.2.7",
@@ -25,6 +28,8 @@
     "react": "18.0.0",
     "react-i18next": "^11.18.3",
     "react-native": "0.69.3",
+    "react-native-fbsdk": "^3.0.0",
+    "react-native-fbsdk-next": "^11.1.0",
     "react-native-flipper": "^0.156.0",
     "react-native-gesture-handler": "^2.8.0",
     "react-native-linear-gradient": "^2.6.2",

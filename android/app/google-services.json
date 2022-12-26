@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "75517342257",
+    "project_id": "grit-studies-a49f1",
+    "storage_bucket": "grit-studies-a49f1.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:75517342257:android:e3c7420c3cde5186f79b10",
+        "android_client_info": {
+          "package_name": "com.grit_cli"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "75517342257-ulr25jjcuh56h7ius1l1j71vn5o3htlk.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.grit_cli",
+            "certificate_hash": "5e8f16062ea3cd2c4a0d547876baa6f38cabf625"
+          }
+        },
+        {
+          "client_id": "75517342257-ihh4kmsd2ci8qkstsur9mr4pc6oelalc.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBcw8OHyTepFL5FyCxqk3_QEseX41jG_dw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "75517342257-ihh4kmsd2ci8qkstsur9mr4pc6oelalc.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
