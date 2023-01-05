@@ -1,16 +1,18 @@
 import React from 'react';
+import { StyleSheet } from 'react-native';
 import { createMaterialBottomTabNavigator } from '@react-navigation/material-bottom-tabs';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
-import Home from './home';
-import LoginFirst from './login_first';
+import Home from '../Home/home';
+import LoginFirst from '../Authentication/login_first';
 import { NavigationContainer } from '@react-navigation/native';
+import {widthPercentageToDP as wp, heightPercentageToDP as hp} from 'react-native-responsive-screen';
 
 const Tab = createMaterialBottomTabNavigator();
 
 const NavTab = () => {
     return (
-    <NavigationContainer style={{position: 'absolute', left: 0, right: 0, bottom: 0}}>
-      <Tab.Navigator initialRouteName="Feed" activeColor="#30F2B3" inactiveColor="black" barStyle={{ backgroundColor: 'white', marginTop:400 }}>
+      <NavigationContainer>
+      <Tab.Navigator initialRouteName="Feed" activeColor="#30F2B3" inactiveColor="black" barStyle={{ backgroundColor: 'white'}}>
         <Tab.Screen
         name="Home"
         component={Home}

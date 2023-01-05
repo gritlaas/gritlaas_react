@@ -3,14 +3,16 @@ import { StyleSheet, Text, View, Image, ScrollView, TextInput, Pressable,
      Dimensions, SafeAreaView } from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
 import { Card, SearchBar } from '@rneui/themed';
+import * as Progress from 'react-native-progress';
 import { Button, Dialog, Divider } from '@rneui/base';
 
 
-const LoginSecond = ({navigation}) => {
+const SignupPassword = ({navigation}) => {
     var width = Dimensions.get('window').width; //full width
     var height = Dimensions.get('window').height; //full height
     const [text, onChangeText] = React.useState(null);
     const [password, onChangePassword] = React.useState(null);
+    const [confirmPassword, onChangeConfirmPassword] = React.useState(null);
   return (
     <ScrollView contentContainerStyle={styles.container}>
     <ScrollView horizontal>
@@ -79,12 +81,26 @@ const LoginSecond = ({navigation}) => {
       <SafeAreaView marginTop={10}>
       <TextInput
         style={styles.input}
-        placeholder="Email"
-        value={text}
-        onChangeText={onChangeText}
+        onChangeText={onChangePassword}
+        value={password}
+        placeholder="Password"
+        keyboardType="password"
         placeholderTextColor={"#0B774B"}
         backgroundColor = "#F9FFFC"
       />
+      <TextInput
+        style={styles.input}
+        onChangeText={onChangeConfirmPassword}
+        value={confirmPassword}
+        placeholder="Confirm Password"
+        keyboardType="password"
+        placeholderTextColor={"#0B774B"}
+        backgroundColor = "#F9FFFC"
+      />
+      <Text style={{
+        color:"#0B774B", textAlign: "left", marginTop: 10, fontSize:12, marginLeft: 30, width: 330
+      }}>8 characters or longer. Combine upper and lowercase 
+        letters and numbers.</Text>
     </SafeAreaView>
     <Button
     type="solid"
@@ -96,92 +112,18 @@ const LoginSecond = ({navigation}) => {
     alignContent: 'center',
     margin: 0,
     flex: 1,
-    marginTop:30,
+    marginTop:40,
     paddingLeft:0,
     marginLeft: 30,
     backgroundColor: "#0B774B",
     borderRadius: 12
     }}
-    onPress = {() => navigation.navigate('LoginThird')}
+    onPress = {() => navigation.navigate('LoginFourth')}
     >
-        Continue
+        Join
     </Button>
-    <Divider 
-    orientation='horizontal'
-    color='#CDEFE9'
-    width={1}
-    style={{ width:"83%",marginLeft:30, marginTop: 30 }}
-    />
-    <Text style = {{color:"#0B774B",
-     marginLeft:160,
-    marginTop: -10, 
-    backgroundColor:"white",
-    padding:2, 
-    width: 27}}>OR</Text>
 
-    
-<Button
-    type="outline"
-    icon={<Image source={require("../../Assets/Images/google.jpeg")} style={{ width: 20, height:20}}/>}
-    titleStyle={{ color: "#0B774B", fontSize:15, margin:5 }} 
-    buttonStyle =
-    {{
-    height: 50,
-    width: 300, 
-    margin: 0,
-    flex: 1,
-    marginTop:20,
-    paddingLeft:0,
-    marginLeft: 30,
-    backgroundColor: "white",
-    borderRadius: 12,
-    borderColor: "#0B774B"
-    }}
-    >
-        Continue with Google
-    </Button>
-    <Button
-    type="outline"
-    icon={ <Icon name="logo-apple" size={20} color="black" ></Icon>}
-    titleStyle={{ color: "#0B774B", fontSize:15, margin:5 }} 
-    buttonStyle =
-    {{
-    height: 50,
-    width: 300, 
-    margin: 0,
-    flex: 1,
-    marginTop:10,
-    paddingTop: 2,
-    paddingLeft: 0,
-    marginLeft: 30,
-    backgroundColor: "white",
-    borderRadius: 12,
-    borderColor: "#0B774B"
-    }}
-    >
-        Continue with Apple
-    </Button>
-    <Button
-    type="outline"
-    icon={ <Icon name="logo-facebook" size={20} color="#3F51B5"></Icon>}
-    titleStyle={{ color: "#0B774B", fontSize:15, margin:5 }} 
-    buttonStyle =
-    {{
-    height: 50,
-    width: 300, 
-    margin: 0,
-    flex: 1,
-    marginTop:10,
-    marginLeft: 30,
-    paddingLeft: 30,
-    backgroundColor: "white",
-    borderRadius: 12,
-    borderColor: "#0B774B"
-    }}
-    >
-        Continue with Facebook
-    </Button>
-    <Text style = {{color:"#0B774B", textAlign: "center", marginTop: 10, fontSize:12, marginLeft: 20, width: 330}}>By joining, you agree to GRIT Studies
+    <Text style = {{color:"#0B774B", textAlign: "center", marginTop: 107, fontSize:12, marginLeft: 20, width: 330}}>By joining, you agree to GRIT Studies
     <Text style = {{color:"#FF6E15", textAlign: "center"}}>Terms of Service & Privacy Policy</Text>
      , as well as to receive occasional emails from us.</Text>
     <Divider 
@@ -190,7 +132,7 @@ const LoginSecond = ({navigation}) => {
     width={1}
     style={{ width:"100%", marginTop: 15 }}
     />
-    <Text style = {{color:"#0B774B", textAlign: "center", marginTop: 10 , height: 50}}>Already a member?
+    <Text style = {{color:"#0B774B", textAlign: "center", marginTop: 10, height: 80}}>Already a member?
     <Text style = {{color:"#FF6E15", textAlign: "center"}}> Sign in</Text></Text>
     </ScrollView>
   );
@@ -215,4 +157,4 @@ const styles = StyleSheet.create({
       },
   });
   
-export default LoginSecond;
+export default SignupPassword;

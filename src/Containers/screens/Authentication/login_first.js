@@ -4,61 +4,91 @@ import { StyleSheet, Text, View, Image, ScrollView, TextInput, Pressable,
 import Icon from 'react-native-vector-icons/Ionicons';
 import { Button, Dialog, Divider } from '@rneui/base';
 import auth from '@react-native-firebase/auth';
-import { GoogleSignin } from '@react-native-google-signin/google-signin';
-import {  LoginManager, AccessToken } from "react-native-fbsdk-next";
+import firestore from '@react-native-firebase/firestore';
+import { GoogleSignin,
+  statusCodes,
+ } from '@react-native-google-signin/google-signin';
+import { navigate } from '@/Navigators/utils';
 
-
-GoogleSignin.configure();
-async function onGoogleButtonPress() {
-  // Check if your device supports Google Play
-  await GoogleSignin.hasPlayServices({ showPlayServicesUpdateDialog: true });
-  // Get the users ID token
-  const { idToken } = await GoogleSignin.signIn();
-
-  // Create a Google credential with the token
-  const googleCredential = auth.GoogleAuthProvider.credential(idToken);
-
-  // Sign-in the user with the credential
-  return auth().signInWithCredential(googleCredential);
-}
-
-async function onFacebookButtonPress() {
-  // Attempt login with permissions
-  const result = await LoginManager.logInWithPermissions(['public_profile', 'email']);
-
-  if (result.isCancelled) {
-    throw 'User cancelled the login process';
-  }
-
-  // Once signed in, get the users AccesToken
-  const data = await AccessToken.getCurrentAccessToken();
-
-  if (!data) {
-    throw 'Something went wrong obtaining access token';
-  }
-
-  // Create a Firebase credential with the AccessToken
-  const facebookCredential = auth.FacebookAuthProvider.credential(data.accessToken);
-
-  // Sign-in the user with the credential
-  return auth().signInWithCredential(facebookCredential);
-}
-
+  
 const LoginFirst = ({ navigation }) => {
     var width = Dimensions.get('window').width; //full width
     var height = Dimensions.get('window').height; //full height
     const [text, onChangeText] = React.useState(null);
-    const [password, onChangePassword] = React.useState(null);
+    const [authenticated, setAutheticated] = useState(false);
+    const [email, setEmail] = React.useState("");
+    const [password, setPassword] = React.useState("");
     // Set an initializing state whilst Firebase connects
-    const [initializing, setInitializing] = useState(true);
+    const [profileImage, setProfileImage] = useState("");
     const [user, setUser] = useState();
+    useEffect(() => {
+      GoogleSignin.configure({
+        webClientId:
+        '75517342257-ihh4kmsd2ci8qkstsur9mr4pc6oelalc.apps.googleusercontent.com',
+        }); 
+    }, []);
+
+    const saveData = () => {
+      firestore().collection('Users').add({
+        email: email,
+        password: password,
+      })
+      .then(()=>{
+        console.log('User added');
+      });
+    };
+
+    auth().onAuthStateChanged((user) => {
+      if(user) {
+      setAutheticated(true);
+      }
+      });
+    
+    // const signOut = async () => {
+    //     try {
+    //       await GoogleSignin.revokeAccess();
+    //       await GoogleSignin.signOut();
+    //       setloggedIn(false);
+    //       setuserInfo([]);
+    //     } catch (error) {
+    //       console.error(error);
+    //     }
+    //   };
+      
+    const signIn = async () => {
+      try {
+        console.log("STARTING");
+        await GoogleSignin.hasPlayServices();
+        console.log("STARTING SIGNOUT");
+        await GoogleSignin.signOut();
+        console.log("SIGNEDOUT");
+        const userInfo = await GoogleSignin.signIn();
+        console.log("PRINT");
+        console.log(userInfo);
+        setProfileImage(userInfo.photo);
+        const { idToken } = await GoogleSignin.signIn();
+        const googleCredential = auth.GoogleAuthProvider.credential(idToken); 
+        return auth().signInWithCredential(googleCredential); 
+      } catch (error) {
+        if (error.code === statusCodes.SIGN_IN_CANCELLED) {
+          // user cancelled the login flow
+          alert('Cancel');
+        } else if (error.code === statusCodes.IN_PROGRESS) {
+          // operation (e.g. sign in) is in progress already
+          alert('Signin in progress');
+        } else if (error.code === statusCodes.PLAY_SERVICES_NOT_AVAILABLE) {
+          // play services not available or outdated
+          alert('PLAY_SERVICES_NOT_AVAILABLE');
+        }
+      }
+    };
 
   return (
     <ScrollView contentContainerStyle={styles.container}>
     <ScrollView horizontal>
         <View>
             <Image
-             source={require('../../Assets/Images/logo.jpeg')}
+             source={require('../../../Assets/Images/logo.jpeg')}
              style={{ width: 70, height: 70, borderRadius: 100, marginTop: 70, marginLeft: 30}}>
              </Image>
         </View>
@@ -119,15 +149,15 @@ const LoginFirst = ({ navigation }) => {
       <TextInput
         style={styles.input}
         placeholder="Email / Username"
-        value={text}
-        onChangeText={onChangeText}
+        value={email}
+        onChangeText={(txt)=>{setEmail(txt)}}
         placeholderTextColor={"#0B774B"}
         backgroundColor = "#F9FFFC"
       />
       <TextInput
         style={styles.input}
-        onChangeText={onChangePassword}
         value={password}
+        onChangeText={(txt)=>{setPassword(txt)}}
         placeholder="Password"
         keyboardType="password"
         placeholderTextColor={"#0B774B"}
@@ -143,12 +173,13 @@ const LoginFirst = ({ navigation }) => {
         fontWeight: '400',
         marginTop: 10
       }}
+      onPress = {() => navigation.navigate('SignupEmail')}
     >
         Forgot password?
     </Text>
     <Button
     type="solid"
-    titleStyle={{ color: "white", fontSize:15 }} 
+    titleStyle={{ color: "white", fontSize:15 }}
     buttonStyle =
     {{
     height: 50,
@@ -162,8 +193,7 @@ const LoginFirst = ({ navigation }) => {
     backgroundColor: "#0B774B",
     borderRadius: 12
     }}
-    onPress = {() => navigation.navigate('LoginSecond')}
-    >
+    onPress = {() =>{ saveData();}}>
         Continue
     </Button>
     <Divider 
@@ -181,7 +211,7 @@ const LoginFirst = ({ navigation }) => {
 
 <Button
     type="outline"
-    icon={<Image source={require("../../Assets/Images/google.jpeg")} style={{ width: 20, height:20}}/>}
+    icon={<Image source={require("../../../Assets/Images/google.jpeg")} style={{ width: 20, height:20}}/>}
     titleStyle={{ color: "#0B774B", fontSize:15, marginLeft: 5 }} 
     buttonStyle =
     {{
@@ -196,7 +226,7 @@ const LoginFirst = ({ navigation }) => {
       borderRadius: 12,
       borderColor: "#0B774B"
     }}
-    onPress={() => onGoogleButtonPress().then(() => console.log('Signed in with Google!'))}
+    onPress={() => {signIn();}}
     >
         Continue with Google
     </Button>

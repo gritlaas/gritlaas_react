@@ -4,39 +4,36 @@ import Icon from 'react-native-vector-icons/Ionicons';
 import { Card, SearchBar } from '@rneui/themed';
 import * as Progress from 'react-native-progress';
 import { Button } from '@rneui/base';
-import { EducatorDetails } from "../../Constants/Educators"
-import { CoursesDetails } from "../../Constants/Courses"
-import NavTab from '../screens/nav_tab'
+import { EducatorDetails } from "../../../Constants/Educators";
+import { CoursesDetails } from "../../../Constants/Courses";
+import {widthPercentageToDP as wp, heightPercentageToDP as hp} from 'react-native-responsive-screen';
+// import NavTab from '../screens/nav_tab';
 
 
 const Home = ({ navigation }) => {
-    var width = Dimensions.get('window').width; //full width
-    var height = Dimensions.get('window').height; //full height
-    
   return (
-    <ScrollView>
+    <ScrollView style={styles.responsiveBox}>
     <Card 
-    width= {width}
+    width= {wp('100%')}
     height = {160}
     borderRadius = {5}
     containerStyle= {{ backgroundColor:"#27BC7F", margin: 0, padding:0}}
     >
     <Card.Image
-        source={require('../../Assets/Images/avatar.jpeg')}
+        source={require('../../../Assets/Images/avatar.jpeg')}
         style={{ width: 50, height: 50, borderRadius: 100, marginTop: 40, marginLeft: 20}}
     >
     </Card.Image>
-    <Text style={{color:"white", marginLeft: 80, marginTop:-50, fontSize: 14}}>Hello!</Text>
-    <Text style={{color:"#0a5943", marginLeft: 80, marginTop:7, fontWeight:"bold", fontSize:16}}>Jyoti Jha</Text>
+    <Text style={{color:"white", marginLeft: wp('20%'), marginTop:hp('-6%'), fontSize: 14}}>Hello!</Text>
+    <Text style={{color:"#0a5943", marginLeft: wp('20%'),  fontWeight:"bold", fontSize:16}}>Jyoti Jha</Text>
     <Card 
-    width= {30}
     height = {30}
     borderRadius = {10}
     containerStyle= {{ 
     padding :0,
-    top : -50,
-    left : 330,
-    width: 30
+    top : hp('-8%'),
+    marginLeft : wp('85%'),
+    width: wp('7%')
     }}>
     <Icon name="notifications-outline" size={27} ></Icon>
     </Card>
@@ -53,24 +50,24 @@ const Home = ({ navigation }) => {
         color: "#0B774B",
         backgroundColor: "#DCFFF1",
         borderRadius: 5,
-        width: "75%",
+        width: wp('80%'),
         height:40,
-        marginTop: -30,
-        marginLeft:20,
+        marginTop: hp('-4%'),
+        marginLeft: wp('6%'),
         borderWidth: 0
     }}
-    inputContainerStyle={{ height: 25, width: 290 }}
+    inputContainerStyle={{ height: 25, width: wp('80%') }}
     ></SearchBar>
     </Card>
     
-    <Text style = {{color:"#343434", marginTop: 20, marginLeft: 30}}>
+    <Text style = {{color:"#343434", marginTop: 20, marginLeft: wp('7%')}}>
         Continue Learning
     </Text>
     <Card
-    width= "85%"
+    width= {wp('85%')}
     height = {100}
     borderRadius = {10}
-    containerStyle= {{ padding :10, paddingLeft:20, backgroundColor:"#96F2D4", marginLeft:30}}>
+    containerStyle= {{ padding :10, paddingLeft:wp('5%'), backgroundColor:"#96F2D4", marginLeft:wp('7%')}}>
         <Text marginLeft= {20} style={{color:"#00301C"}}>
             Grit Studies
         </Text>
@@ -79,12 +76,12 @@ const Home = ({ navigation }) => {
         </Text>
         <Progress.Bar 
         progress={0.4}
-        width={250}
+        width={wp('70%')}
         color="#FF6E15"
         marginTop={20} 
         backgroundColor="#FFE1CF"/>
     </Card>
-    <Text style = {{color:"#343434", marginTop: 20, marginLeft: 30}}>
+    <Text style = {{color:"#343434", marginTop: 20, marginLeft: wp('7%')}}>
         Top Categories
     </Text>
     <ScrollView horizontal style={{ marginTop:10 }}>
@@ -198,10 +195,10 @@ const Home = ({ navigation }) => {
         </View>
     </ScrollView>
     <View style={{flexDirection: "row", width: 750}}>
-    <Text style = {{color:"#343434", marginTop: 10, marginLeft: 30, flex:1}}>
+    <Text style = {{color:"#343434", marginTop: 10, marginLeft: wp('7%'), flex:1}}>
         Recommended Course For You
     </Text>
-    <Text style = {{color:"orange", marginTop: 10, paddingLeft: 90, flex:2}}>
+    <Text style = {{color:"orange", marginTop: 10, paddingLeft: wp('25%'), flex:2}}>
         See all
     </Text>
     </View>
@@ -209,7 +206,7 @@ const Home = ({ navigation }) => {
     <ScrollView 
     horizontal
     disableIntervalMomentum={ true } 
-    snapToInterval={ width }
+    snapToInterval={wp('100%')}
     marginLeft = {20}
     >
     {
@@ -249,17 +246,17 @@ const Home = ({ navigation }) => {
     </ScrollView>
 
     <View style={{flexDirection: "row", width: 700}}>
-    <Text style = {{color:"#343434", marginTop: 20, marginLeft: 30, flex:1}}>
+    <Text style = {{color:"#343434", marginTop: 20, marginLeft: wp('7%'), flex:1}}>
         Our Best Instructors
     </Text>
-    <Text style = {{color:"orange", marginTop: 20, paddingLeft: 105, flex:2}}>
+    <Text style = {{color:"orange", marginTop: 20, paddingLeft: wp('28%'), flex:2}}>
         See all
     </Text>
     </View>
     <ScrollView 
     horizontal
     disableIntervalMomentum={ true } 
-    snapToInterval={ width }
+    snapToInterval={wp('100%')}
     >
     {
         EducatorDetails.map((items,key)=>(
@@ -282,7 +279,7 @@ const Home = ({ navigation }) => {
          color: 'grey',
          flex: 2
          }}>{items.info}</Text>
-    <View style={{flexDirection:'row', flexWrap:'wrap', marginTop:5, marginLeft: 35}}>
+    <View style={{flexDirection:'row', flexWrap:'wrap', marginTop:5, width:wp('20%'), marginLeft: wp('7%')}}>
         {
         items.rating.map((item,key)=>(
             <Icon key ={key} name='star' style={{ marginLeft:0, color:"#FFC107", flex:1}}></Icon>
@@ -306,6 +303,11 @@ const styles = StyleSheet.create({
       flex: 1,
       padding: 20
     },
+    responsiveBox: {
+        width: wp('100%'),
+        height: hp('17%'),
+        flexDirection: 'column'
+      },
   });
   
 export default Home;
