@@ -8,19 +8,17 @@ import { Button } from '@rneui/base';
 import { LearnerDetails } from "../../../Constants/Learners"
 import { CoursesDetails } from "../../../Constants/Courses"
 import LinearGradient from 'react-native-linear-gradient';
-import { CENTRAL_FILE_HEADER } from '../../../../android/gradle/wrapper/wrapper/dists/gradle-7.3.3-all/4295vidhdd9hd3gbjyw1xqxpo/gradle-7.3.3/docs/javadoc/jquery/jszip/dist/jszip';
+import {widthPercentageToDP as wp, heightPercentageToDP as hp} from 'react-native-responsive-screen';
 
-// import NavTab from '../screens/nav_tab'
+import NavTab from './navTab';
 
 
 const EducatorHome = ({ navigation }) => {
-    var width = Dimensions.get('window').width; //full width
-    var height = Dimensions.get('window').height; //full height
-    
   return (
-    <ScrollView contentContainerStyle={styles.container}>
+    <>
+    <ScrollView contentContainerStyle={styles.responsiveBox}>
     <Card 
-    width= {width}
+    width = {wp('100%')}
     borderRadius = {5}
     containerStyle= {{ backgroundColor:"#27BC7F", margin: 0, padding:0}}
     >
@@ -29,34 +27,34 @@ const EducatorHome = ({ navigation }) => {
       padding:10}}>
     <Card.Image
         source={require('../../../Assets/Images/avatar.jpeg')}
-        style={{ width: 50, height: 50, borderRadius: 100, marginTop: 20, marginLeft: 20}}
+        style={{ width: 50, height: 50, borderRadius: 100, marginTop: 20, marginLeft: wp('3%')}}
     >
     </Card.Image>
-    <View marginTop={20} marginLeft={10}>
+    <View marginTop={20} marginLeft={wp('2%')}>
     <Text style={{color:"white", fontSize: 14}}>Hello!</Text>
     <Text style={{color:"#0a5943",fontWeight:"bold", fontSize:16}}>Jyoti Jha</Text>
     </View>
-    <View marginTop={20} marginLeft={200}>
+    <View marginTop={20} marginLeft={wp('50%')}>
     <Icon name="chatbubble-ellipses-outline" size={27} color="black"></Icon>
     </View>
     </View>
     </Card>
-    <View style={{flexDirection: "row", width: 700}}>
-    <Text style = {{color:"#343434", marginTop: 10, marginLeft: 30, flex:1}}>
+    <View style={{flexDirection: "row", width: wp('40%')}}>
+    <Text style = {{color:"#343434", marginTop: 10, marginLeft: wp('10%'), flex:1}}>
         Top Learners
     </Text>
     </View>
     <ScrollView 
     horizontal
     disableIntervalMomentum={ true } 
-    snapToInterval={ width }
+    snapToInterval={ wp('100%') }
     >
     {
         LearnerDetails.map((items,key)=>(
     <View style={{marginTop:10}} key = {key}>
     <Card.Image
     source= {items.img}
-    style={{ width: 64, height: 64, borderRadius: 100, marginLeft: 20}}
+    style={{ width: 64, height: 64, borderRadius: 100, marginLeft: wp('5%')}}
     >
     </Card.Image>
     </View>
@@ -87,7 +85,7 @@ const EducatorHome = ({ navigation }) => {
     <View>
     <Card.Image
     source= {require("../../../Assets/Images/course_images/react.jpeg")}
-    style={{ width: 64, height: 64, borderRadius: 100, marginLeft: 15}}
+    style={{ width: 64, height: 64, borderRadius: 100, marginLeft: wp('3%')}}
     >
     </Card.Image>
     </View>
@@ -126,12 +124,12 @@ const EducatorHome = ({ navigation }) => {
       flexDirection: 'row'
     }]}>
         <View style={{ elevation: 5, flex: 1, marginRight: 25}}>
-    <Text style = {{color:"#343434", marginTop: 20, marginLeft: 30}}>
+    <Text style = {{color:"#343434", marginTop: 20, marginLeft: wp('10%')}}>
         Categories
     </Text>
     </View>
     <View style={{ elevation: 5, flex: 1, maringRight: 110}}>
-    <Text style = {{color:"#27BC7F", marginTop: 20, marginLeft: 110}}>
+    <Text style = {{color:"#27BC7F", marginTop: 20, marginLeft: wp('27%')}}>
         View all
     </Text>
     </View>
@@ -139,7 +137,7 @@ const EducatorHome = ({ navigation }) => {
     <ScrollView 
     horizontal
     disableIntervalMomentum={ true } 
-    snapToInterval={ width }
+    snapToInterval={wp('100%')}
     style={{marginLeft:10}}
     >
     <View>
@@ -191,18 +189,17 @@ const EducatorHome = ({ navigation }) => {
     </View>
     </ScrollView>
     <View style={{flexDirection: "row", width: 750}}>
-    <Text style = {{color:"#343434", marginTop: 10, marginLeft: 30, flex:1}}>
+    <Text style = {{color:"#343434", marginTop: 10, marginLeft: wp('7%'), flex:1}}>
         Recently Uploaded Videos
     </Text>
-    <Text style = {{color:"#27BC7F", marginTop: 10, paddingLeft: 90, flex:2}}>
+    <Text style = {{color:"#27BC7F", marginTop: 10, paddingLeft: wp('20%'), flex:2}}>
         View all
     </Text>
     </View>
-    
     <ScrollView 
     vertical
     disableIntervalMomentum={ true } 
-    snapToInterval={ width }
+    snapToInterval={wp('100%')}
     marginLeft = {20}
     >
     {
@@ -246,9 +243,10 @@ const EducatorHome = ({ navigation }) => {
             </Card>
             </View>
             ))}
-   
     </ScrollView>
     </ScrollView>
+    </>
+
   );
 }
 
@@ -266,6 +264,10 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     height: 150,
     width: 352,
+  },
+  responsiveBox: {
+    width: wp('100%'),
+    flexDirection: 'column'
   }
   });
   

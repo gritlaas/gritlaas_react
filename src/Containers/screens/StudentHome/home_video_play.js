@@ -4,7 +4,7 @@ import Icon from 'react-native-vector-icons/Ionicons';
 import { Card, SearchBar } from '@rneui/themed';
 import * as Progress from 'react-native-progress';
 import { Button } from '@rneui/base';
-import NavTab from '../../screens/Commons/nav_tab';
+import NavTab from '../Commons/nav_tab';
 import { CoursesDetails }  from '../../../Constants/Courses';
 import {widthPercentageToDP as wp, heightPercentageToDP as hp} from 'react-native-responsive-screen';
 
