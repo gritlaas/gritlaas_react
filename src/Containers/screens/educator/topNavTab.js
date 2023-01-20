@@ -1,31 +1,29 @@
-import React from 'react';
-import { StyleSheet } from 'react-native';
-import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
-import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
-import Home from '../StudentHome/home';
-import LoginFirst from '../Authentication/login_first';
-import { NavigationContainer } from '@react-navigation/native';
-import {widthPercentageToDP as wp, heightPercentageToDP as hp} from 'react-native-responsive-screen';
+import React from 'react'
+import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs'
+import Home from '../StudentHome/home'
+import LoginFirst from '../Authentication/login_first'
+import { NavigationContainer } from '@react-navigation/native'
+import Dashboard from './dashboard'
 
-const Tab = createMaterialTopTabNavigator();
+const Tab = createMaterialTopTabNavigator()
 
 const NavTab = () => {
-    return (
-      <NavigationContainer>
-        <Tab.Navigator screenOptions={{
-    tabBarLabelStyle: { fontSize: 12 },
-    tabBarItemStyle: { width: 100 },
-    tabBarStyle: { backgroundColor: 'white', borderBottomColor:'green' },
-    }}
-    >
+  return (
+    <NavigationContainer>
+      <Tab.Navigator
+        screenOptions={{
+          tabBarLabelStyle: { fontSize: 12 },
+          tabBarItemStyle: { width: 100 },
+          tabBarStyle: { backgroundColor: 'white' },
+        }}
+      >
         <Tab.Screen name="Overview" component={Home} />
         <Tab.Screen name="Approvals" component={LoginFirst} />
         <Tab.Screen name="Finance" component={LoginFirst} />
         <Tab.Screen name="Feedbacks" component={LoginFirst} />
-        </Tab.Navigator>
+      </Tab.Navigator>
     </NavigationContainer>
-    );
+  )
 }
 
-export default NavTab;
-
+export default NavTab

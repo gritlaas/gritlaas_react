@@ -1,103 +1,162 @@
-import React from 'react';
-import { StyleSheet, Text, View, Image, ScrollView, TextInput, Pressable, Dimensions } from 'react-native';
-import Icon from 'react-native-vector-icons/Ionicons';
-import { Card, SearchBar } from '@rneui/themed';
-import * as Progress from 'react-native-progress';
-import { Button } from '@rneui/base';
-import NavTab from '../Commons/nav_tab';
-import { CoursesDetails }  from '../../../Constants/Courses';
-import {widthPercentageToDP as wp, heightPercentageToDP as hp} from 'react-native-responsive-screen';
-
+import React from 'react'
+import { StyleSheet, Text, View, ScrollView } from 'react-native'
+import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs'
+import { NavigationContainer } from '@react-navigation/native'
+import Icon from 'react-native-vector-icons/Ionicons'
+import { Card } from '@rneui/themed'
+import {
+  widthPercentageToDP as wp,
+  heightPercentageToDP as hp,
+} from 'react-native-responsive-screen'
+import { Button } from '@react-native-material/core'
+import Video from 'react-native-video'
+import video from '../../../Assets/Videos/demo.mp4'
+import NavTab from './video_player_navtab'
 
 const HomeVideoPlay = ({ navigation }) => {
+  const [isPlaying, setIsPlaying] = React.useState(false)
+  const [isMuted, setIsMuted] = React.useState(false)
+
   return (
     <ScrollView style={styles.responsiveBox}>
-    <Card
-    width= {wp('100%')}
-    height = {hp('10%')}
-    borderRadius = {5}
-    containerStyle= {{ backgroundColor:"#27BC7F", margin: 0, padding:0}}
-    >
-      <View style={{ display: "flex", flexDirection: "row"}}>
-    <Card
-        height = {hp('5%')}
-        borderRadius = {10}
-        containerStyle= {{
-        padding :0,
-        marginTop : hp('2%'),
-        left : 0,
-        width: 30
-        }}>
-        <Icon name="chevron-back-outline" size={27} color="black"></Icon>
-      </Card>
-      <Text style={{color:"white", marginLeft: wp('1%'), marginTop:hp('3%'), fontSize: 16}}>Advanced Android Course</Text>
+      <View style={styles.card}>
+        <Card
+          height={hp('5%')}
+          borderRadius={10}
+          containerStyle={styles.iconCard}
+        >
+          <Icon name="chevron-back-outline" size={27} color="black" />
+        </Card>
+        <Text style={styles.title}>Advanced Android Course</Text>
       </View>
-    </Card>
-    <View style={{height: hp('79%')}}>
-          <ScrollView vertical
-      disableIntervalMomentum={ true } 
-      snapToInterval={wp('100%')}
-      marginLeft = {20}>
-          {
-          CoursesDetails.map((items, key)=>(
-              <View key = {key}>
-                  <Card
-                  width= {wp('100%')}
-                  height = {80}
-                  backgroundColor = "white"
-                  containerStyle= {{padding:0, marginLeft:5, borderColor: "transparent"}}>
-                  <Card.Image
-                  source={items.img}
-                  style={{ width: 80, height: 80, marginLeft: 0, padding:0}}
-                  >
-                  <Text 
-                  style={{
-                       width: wp('100%'),
-                       marginLeft: wp('22%'), 
-                       fontSize: 13, top: 5, fontWeight: "bold"}}>{items.course_name}</Text>
-                  <Text 
-                  style={{
-                       width: wp('100%'),
-                       marginLeft: wp('22%'),
-                       fontSize: 10, marginTop: 9}}>{items.published_by}</Text>
-                  </Card.Image>
-                  <View style={{flexDirection:'row', flexWrap:'wrap', marginLeft: wp('20%')}}>
-                  {
-                  items.rating.map((item,key)=>(
-                  <Icon key ={key} name='star' style={{  marginLeft: wp('2%'), marginTop: -35, color:"#FFC107"}}></Icon>
-                  ))
-                  }
-                  </View>
-                  <Text 
-                  style={{
-                       width: wp('100%'),
-                       marginLeft: wp('23%'), 
-                       fontSize: 11, top: 5, marginTop: -25, fontWeight: "bold"}}>$ 125</Text>
-                  </Card>
-                  </View>
-                  ))
-        }
-        </ScrollView>
+      <View>
+        <Video
+          source={video}
+          paused={!isPlaying}
+          controls={true}
+          style={styles.video}
+          muted={isMuted}
+        />
+        {/* <Button
+          onPress={() => setIsPlaying(p => !p)}
+          title={isPlaying ? 'Stop' : 'Play'}
+        />
+        <Button
+          onPress={() => setIsMuted(m => !m)}
+          title={isMuted ? 'Unmute' : 'Mute'}
+  /> */}
+        <View style={styles.description}>
+          <Text style={styles.text1}>Android App Development Course</Text>
+          <Text style={styles.text2}>
+            Kotlin | Android App Developement | Firebase
+          </Text>
+          <Text style={styles.text2}>Created By Arul Jeyaraj</Text>
         </View>
-    <NavTab></NavTab>
-  </ScrollView>
-  );
+        <View style={styles.buttonWrapper}>
+          <Button
+            title="Wishlist"
+            color="#96F2D4"
+            width={100}
+            titleStyle={{ fontSize: 10 }}
+          />
+          <Button
+            title="Share"
+            color="#96F2D4"
+            width={100}
+            titleStyle={{ fontSize: 10 }}
+          />
+          <Button
+            title="Download"
+            color="#96F2D4"
+            width={100}
+            titleStyle={{ fontSize: 10 }}
+          />
+        </View>
+      </View>
+      <NavTab />
+      <View
+        style={
+          (styles.buttonWrapper,
+          {
+            flex: 1,
+            flexDirection: 'row',
+            flexWrap: 'wrap',
+            alignItems: 'flex-end',
+            justifyContent: 'flex-end',
+            marginTop: 60,
+          })
+        }
+      >
+        <Button
+          title="$49"
+          color="#D8FFF2"
+          width={210}
+          titleStyle={{ fontSize: 10 }}
+        />
+        <Button
+          title="Buy Now"
+          color="#0B774B"
+          width={200}
+          titleStyle={{ fontSize: 10 }}
+        />
+      </View>
+    </ScrollView>
+  )
 }
 
 const styles = StyleSheet.create({
   baseText: {
-      fontFamily: "Roboto"
+    fontFamily: 'Roboto',
+  },
+  card: {
+    backgroundColor: '#27BC7F',
+    margin: 0,
+    padding: 0,
+    height: 60,
+    flexDirection: 'row',
+    justifyContent: 'flex-start',
+  },
+  iconCard: {
+    padding: 0,
+    marginTop: hp('2%'),
+    left: 0,
+    width: 30,
+  },
+  title: {
+    color: 'white',
+    marginTop: hp('3%'),
+    fontSize: 16,
+  },
+  description: {
+    margin: 10,
+  },
+  buttonWrapper: {
+    margin: 10,
+    display: 'flex',
+    flexDirection: 'row',
+    justifyContent: 'space-around',
   },
   container: {
     flex: 1,
-    padding: 20
+    padding: 20,
+  },
+  text1: {
+    color: '#0B774B',
+    fontSize: 20,
+  },
+  text2: {
+    color: '#0B774B',
+    fontSize: 14,
   },
   responsiveBox: {
-      width: wp('100%'),
-      height: hp('17%'),
-      flexDirection: 'column'
-    },
-});
+    width: wp('100%'),
+    height: hp('17%'),
+    flexDirection: 'column',
+  },
+  video: {
+    width: wp('100%'),
+    height: 300,
+  },
+})
 
-
-export default HomeVideoPlay;
+export default HomeVideoPlay
