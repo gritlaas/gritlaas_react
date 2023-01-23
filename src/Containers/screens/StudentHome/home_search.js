@@ -1,21 +1,11 @@
 import React from 'react'
-import {
-  StyleSheet,
-  Text,
-  View,
-  Image,
-  ScrollView,
-  TextInput,
-  Pressable,
-  Dimensions,
-} from 'react-native'
+import { StyleSheet, Text, View, Image, ScrollView } from 'react-native'
 import Icon from 'react-native-vector-icons/Ionicons'
 import { Card, SearchBar } from '@rneui/themed'
-import * as Progress from 'react-native-progress'
-import { Button } from '@rneui/base'
 import NavTab from '../Commons/nav_tab'
 import { Button_Name } from '../../../Constants/Button_Name'
-import { 
+import { Button } from '@react-native-material/core'
+import {
   widthPercentageToDP as wp,
   heightPercentageToDP as hp,
 } from 'react-native-responsive-screen'
@@ -27,7 +17,7 @@ const HomeSearch = ({ navigation }) => {
         width={wp('100%')}
         height={50}
         borderRadius={5}
-        containerStyle={{ backgroundColor: '#27BC7F', margin: 0, padding: 0  }}
+        containerStyle={{ backgroundColor: '#27BC7F', margin: 0, padding: 0 }}
       >
         <Card
           height={30}
@@ -36,7 +26,7 @@ const HomeSearch = ({ navigation }) => {
             padding: 0,
             marginTop: 8,
             left: 0,
-            width: wp('7%'),,
+            width: wp('7%'),
           }}
         >
           <Icon name="chevron-back-outline" size={27} color="black" />
@@ -61,7 +51,7 @@ const HomeSearch = ({ navigation }) => {
           placeholderTextColor="#0B774B"
           cancelIcon={{ color: '#0B774B' }}
           clearIcon={{ color: '#0B774B', disabled: false }}
-          searchIcon={{ height: 30, color: '#0B774B'  }}
+          searchIcon={{ height: 30, color: '#0B774B' }}
           containerStyle={{
             color: '#0B774B',
             backgroundColor: '#DCFFF1',
@@ -70,15 +60,15 @@ const HomeSearch = ({ navigation }) => {
             height: 40,
             marginTop: 10,
             marginLeft: 20,
-            borderWidth: 0,,
+            borderWidth: 0,
           }}
           inputContainerStyle={{ height: 25, width: wp('80%') }}
-         />
+        />
         <Icon
           name="filter"
           size={20}
           style={{ marginTop: 20, marginLeft: wp('3%'), color: '#0B774B' }}
-         />
+        />
       </View>
       <Text
         style={{
@@ -97,25 +87,34 @@ const HomeSearch = ({ navigation }) => {
         height={hp('70%')}
       >
         {Button_Name.map((item, key) => (
+          // <Button
+          //   type="outline"
+          //   key={key}
+          //   height={99}
+          //   titleStyle={{ color: '#343434', fontSize: 12 }}
+          //   buttonStyle={{
+          //     alignContent: 'center',
+          //     flex: 1,
+          //     marginTop: 10,
+          //     padding: 5,
+          //     marginLeft: wp('3.5%'),
+          //     color: '#343434',
+          //     borderColor: '#0B774B',
+          //     borderRadius: 8,
+          //   }}
+          // >
+          //   {item}
+          // </Button>
           <Button
-            type="outline"
+            title={item}
+            variant="outlined"
             key={key}
-            titleStyle={{ color: '#343434', fontSize:12 }}
-            buttonStyle={{
-              height: 29,
-              alignContent: 'center',
-              flex: 1,
-              marginTop: 10,
-              padding: 5,
-              marginLeft: wp('3.5%'),
-              color: '#343434',
-              borderColor: '#0B774B',
-              borderRadius: 8,,
-            }}
-          >
-            {' '}
-            {item}{' '}
-          </Button>
+            height={29}
+            margin={2}
+            color="#0B774B"
+            alignItems="center"
+            justifyContent="center"
+          />
         ))}
       </View>
       <NavTab />
@@ -125,16 +124,16 @@ const HomeSearch = ({ navigation }) => {
 
 const styles = StyleSheet.create({
   baseText: {
-    fontFamily: 'Roboto',,
+    fontFamily: 'Roboto',
   },
   container: {
     flex: 1,
-    padding: 20,,
+    padding: 20,
   },
   responsiveBox: {
     width: wp('100%'),
     height: hp('17%'),
-    flexDirection: 'column',,
+    flexDirection: 'column',
   },
 })
 
