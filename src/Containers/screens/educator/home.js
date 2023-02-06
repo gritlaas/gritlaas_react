@@ -1,5 +1,5 @@
 import React from 'react'
-import { StyleSheet, Text, View, ScrollView } from 'react-native'
+import { StyleSheet, Text, View, ScrollView, Pressable } from 'react-native'
 import Icon from 'react-native-vector-icons/Ionicons'
 import FontIcon from 'react-native-vector-icons/FontAwesome5'
 import { Card } from '@rneui/themed'
@@ -22,16 +22,18 @@ const EducatorHome = ({ navigation }) => {
         containerStyle={{ backgroundColor: '#27BC7F', margin: 0, padding: 0 }}
       >
         <View style={{ display: 'flex', flexDirection: 'row', padding: 10 }}>
-          <Card.Image
-            source={require('../../../Assets/Images/avatar.jpeg')}
-            style={{
-              width: 50,
-              height: 50,
-              borderRadius: 100,
-              marginTop: 20,
-              marginLeft: wp('3%'),
-            }}
-          />
+          <Pressable onPress={() => navigation.navigate('Dashboard')}>
+            <Card.Image
+              source={require('../../../Assets/Images/avatar.jpeg')}
+              style={{
+                width: 50,
+                height: 50,
+                borderRadius: 100,
+                marginTop: 20,
+                marginLeft: wp('3%'),
+              }}
+            />
+          </Pressable>
           <View marginTop={20} marginLeft={wp('2%')}>
             <Text style={{ color: 'white', fontSize: 14 }}>Hello!</Text>
             <Text

@@ -156,7 +156,7 @@ const HomeCategories = ({ navigation }) => {
         <ScrollView horizontal>
           <View>
             <Image
-              source={require('../../Assets/Images/development.png')}
+              source={require('../../../Assets/Images/development.png')}
               style={{
                 height: 25,
                 width: 25,

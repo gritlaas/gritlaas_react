@@ -1,5 +1,5 @@
 import React from 'react'
-import { StyleSheet, Text, View, ScrollView } from 'react-native'
+import { StyleSheet, Text, View, ScrollView, Pressable } from 'react-native'
 import Icon from 'react-native-vector-icons/Ionicons'
 import { Card, SearchBar } from '@rneui/themed'
 import * as Progress from 'react-native-progress'
@@ -12,7 +12,7 @@ import {
 } from 'react-native-responsive-screen'
 // import NavTab from '../screens/nav_tab';
 
-const Home = ({ navigation }) => {
+const StudentHome = ({ navigation }) => {
   return (
     <ScrollView style={styles.responsiveBox}>
       <Card
@@ -252,7 +252,7 @@ const Home = ({ navigation }) => {
         >
           Recommended Course For You
         </Text>
-        <Text
+        <Pressable
           style={{
             color: 'orange',
             marginTop: 10,
@@ -260,8 +260,15 @@ const Home = ({ navigation }) => {
             flex: 2,
           }}
         >
-          See all
-        </Text>
+          <Text
+            style={{
+              color: 'orange',
+            }}
+            onPress={() => navigation.navigate('HomeSearchResult')}
+          >
+            See all
+          </Text>
+        </Pressable>
       </View>
       <ScrollView
         horizontal
@@ -343,16 +350,23 @@ const Home = ({ navigation }) => {
         >
           Our Best Instructors
         </Text>
-        <Text
+        <Pressable
           style={{
             color: 'orange',
             marginTop: 20,
             paddingLeft: wp('28%'),
             flex: 2,
           }}
+          onPress={() => navigation.navigate('HomeSearch')}
         >
-          See all
-        </Text>
+          <Text
+            style={{
+              color: 'orange',
+            }}
+          >
+            See all
+          </Text>
+        </Pressable>
       </View>
       <ScrollView
         horizontal
@@ -433,4 +447,4 @@ const styles = StyleSheet.create({
   },
 })
 
-export default Home
+export default StudentHome

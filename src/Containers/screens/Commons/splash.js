@@ -10,13 +10,13 @@ import {
 
 const Splash = ({ navigation }) => {
   setTimeout(() => {
-    navigation.navigate('Onboarding_First') //this.props.navigation.navigate('Login')
-  }, 1000)
+    navigation.navigate('EducatorOrStudent') //this.props.navigation.navigate('Login')
+  }, 5000)
   return (
     <ScrollView contentContainerStyle={styles.container}>
       <View>
         <Image
-          source={require('../../Assets/Images/logo.jpeg')}
+          source={require('../../../Assets/Images/logo.jpeg')}
           style={{ width: 200, height: 200, marginTop: 0 }}
         />
       </View>

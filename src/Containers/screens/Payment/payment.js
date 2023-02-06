@@ -1,5 +1,11 @@
 import * as React from 'react'
-import { StyleSheet, Text, View, ScrollView, TouchableOpacity } from 'react-native'
+import {
+  StyleSheet,
+  Text,
+  View,
+  ScrollView,
+  TouchableOpacity,
+} from 'react-native'
 import { Card } from '@rneui/themed'
 import Icon from 'react-native-vector-icons/Ionicons'
 import CheckBox from '@react-native-community/checkbox'
@@ -13,9 +19,9 @@ const initialState = {
   Stripe: false,
   GooglePay: false,
   ApplePay: false,
-};
+}
 const Payment = ({ navigation }) => {
-  const [state, setState] = React.useState(initialState);
+  const [state, setState] = React.useState(initialState)
   return (
     <ScrollView style={styles.responsiveBox}>
       <Card
@@ -30,7 +36,7 @@ const Payment = ({ navigation }) => {
           containerStyle={{
             padding: 0,
             marginTop: 30,
-            left:0,
+            left: 0,
             width: wp('7%'),
           }}
         >
@@ -65,17 +71,17 @@ const Payment = ({ navigation }) => {
           }}
         >
           <View style={styles.cardWrapper}>
-          <Text>Paypal</Text>
-          <CheckBox
-            disabled={false}
-            value={state.PayPal}
-            onValueChange={value =>
-              setState({
-                ...state,
-                PayPal: value,
-              })
-            }
-          />
+            <Text>Paypal</Text>
+            <CheckBox
+              disabled={false}
+              value={state.PayPal}
+              onValueChange={value =>
+                setState({
+                  ...state,
+                  PayPal: value,
+                })
+              }
+            />
           </View>
         </Card>
         <Card
@@ -89,42 +95,17 @@ const Payment = ({ navigation }) => {
           }}
         >
           <View style={styles.cardWrapper}>
-          <Text>Stripe</Text>
-          <CheckBox
-            disabled={false}
-            value={state.Stripe}
-            onValueChange={value =>
-              setState({
-                ...state,
-                Stripe: value,
-              })
-            }
-          />
-          </View>
-        </Card>
-        <Card
-          height={30}
-          borderRadius={10}
-          containerStyle={{
-            marginTop: 8,
-            left: 0,
-            height: 60,
-            width: wp('90%'),
-            backgroundColor: '#CDEFE9',
-          }}
-        >
-          <View style={styles.cardWrapper}>
-          <Text>Google Pay</Text>
-          <CheckBox
-            disabled={false}
-            value={state.GooglePay}
-            onValueChange={value =>
-              setState({
-                ...state,
-                GooglePay: value,
-              })
-            }
-          />
+            <Text>Stripe</Text>
+            <CheckBox
+              disabled={false}
+              value={state.Stripe}
+              onValueChange={value =>
+                setState({
+                  ...state,
+                  Stripe: value,
+                })
+              }
+            />
           </View>
         </Card>
         <Card
@@ -139,17 +120,42 @@ const Payment = ({ navigation }) => {
           }}
         >
           <View style={styles.cardWrapper}>
-          <Text>Apple Pay</Text>
-          <CheckBox
-            disabled={false}
-            value={state.ApplePay}
-            onValueChange={value =>
-              setState({
-                ...state,
-                ApplePay: value,
-              })
-            }
-          />
+            <Text>Google Pay</Text>
+            <CheckBox
+              disabled={false}
+              value={state.GooglePay}
+              onValueChange={value =>
+                setState({
+                  ...state,
+                  GooglePay: value,
+                })
+              }
+            />
+          </View>
+        </Card>
+        <Card
+          height={30}
+          borderRadius={10}
+          containerStyle={{
+            marginTop: 8,
+            left: 0,
+            height: 60,
+            width: wp('90%'),
+            backgroundColor: '#CDEFE9',
+          }}
+        >
+          <View style={styles.cardWrapper}>
+            <Text>Apple Pay</Text>
+            <CheckBox
+              disabled={false}
+              value={state.ApplePay}
+              onValueChange={value =>
+                setState({
+                  ...state,
+                  ApplePay: value,
+                })
+              }
+            />
           </View>
         </Card>
         <Card
@@ -160,13 +166,23 @@ const Payment = ({ navigation }) => {
             height: 50,
             width: wp('90%'),
             backgroundColor: '#30F2B3',
-            alignItems: 'center'
+            alignItems: 'center',
           }}
         >
           <Text>Add New Card</Text>
         </Card>
-        <TouchableOpacity style={{ backgroundColor:"#0B774B", width: wp('90%'), alignItems:"center", justifyContent:"center", borderRadius:10, height: 50, marginTop: 100 }}>
-          <Text style={{color:"white"}} >Confirm Payment</Text>
+        <TouchableOpacity
+          style={{
+            backgroundColor: '#0B774B',
+            width: wp('90%'),
+            alignItems: 'center',
+            justifyContent: 'center',
+            borderRadius: 10,
+            height: 50,
+            marginTop: 100,
+          }}
+        >
+          <Text style={{ color: 'white' }}>Confirm Payment</Text>
         </TouchableOpacity>
       </View>
     </ScrollView>
@@ -189,8 +205,8 @@ const styles = StyleSheet.create({
   cardWrapper: {
     flexDirection: 'row',
     justifyContent: 'space-between',
-    alignItems: 'center'
-  }
+    alignItems: 'center',
+  },
 })
 
 export default Payment

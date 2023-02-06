@@ -5,10 +5,6 @@ import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityI
 import Home from '../StudentHome/home'
 import LoginFirst from '../Authentication/login_first'
 import { NavigationContainer } from '@react-navigation/native'
-import {
-  widthPercentageToDP as wp,
-  heightPercentageToDP as hp,
-} from 'react-native-responsive-screen'
 
 const Tab = createMaterialBottomTabNavigator()
 
