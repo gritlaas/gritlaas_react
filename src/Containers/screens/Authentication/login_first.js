@@ -7,6 +7,7 @@ import {
   ScrollView,
   TextInput,
   SafeAreaView,
+  Pressable,
 } from 'react-native'
 import Icon from 'react-native-vector-icons/Ionicons'
 import { Button, Divider } from '@rneui/base'
@@ -16,6 +17,7 @@ import {
   GoogleSignin,
   statusCodes,
 } from '@react-native-google-signin/google-signin'
+// import {AsyncStorage} from 'react-native';
 
 const LoginFirst = ({ navigation }) => {
   const [authenticated, setAutheticated] = useState(false)
@@ -23,30 +25,26 @@ const LoginFirst = ({ navigation }) => {
   const [password, setPassword] = React.useState('')
   // Set an initializing state whilst Firebase connects
   const [profileImage, setProfileImage] = useState('')
-  useEffect(() => {
-    GoogleSignin.configure({
-      webClientId:
-        '75517342257-ihh4kmsd2ci8qkstsur9mr4pc6oelalc.apps.googleusercontent.com',
-    })
-  }, [])
 
-  const saveData = () => {
+  GoogleSignin.configure({
+    webClientId:
+      '256200674836-mpsru41t08o89e3ra7sof08s38qf8e5s.apps.googleusercontent.com',
+    offlineAccess: true,
+  })
+
+  const saveData = (registered_email, name, photo, uid) => {
     firestore()
-      .collection('Users')
+      .collection('UserData')
       .add({
-        email: email,
-        password: password,
+        email: registered_email,
+        name: name,
+        photo: photo,
+        uid: uid,
       })
       .then(() => {
         console.log('User added')
       })
   }
-
-  auth().onAuthStateChanged(user => {
-    if (user) {
-      setAutheticated(true)
-    }
-  })
 
   // const signOut = async () => {
   //     try {
@@ -59,7 +57,30 @@ const LoginFirst = ({ navigation }) => {
   //     }
   //   };
 
-  const signIn = async () => {
+  const EmailSignIn = async (email, password) => {
+    try {
+      const res = await auth().signInWithEmailAndPassword(email, password)
+      console.log('Signed-In')
+      console.log(res)
+      navigation.navigate('StudentHome')
+    } catch (error) {
+      console.log(error.code)
+      if (error.code === 'auth/invalid-email') {
+        alert('Please Enter Valid Email Id')
+      }
+      if (error.code === 'auth/user-not-found') {
+        alert(
+          'Please Create your account. No valid account found by the entered email',
+        )
+      }
+      if (error.code === 'auth/wrong-password') {
+        alert(
+          'Please enter correct password. Update your password if you have forgotten the password.',
+        )
+      }
+    }
+  }
+  const GoogleSignIn = async () => {
     try {
       console.log('STARTING')
       await GoogleSignin.hasPlayServices()
@@ -72,6 +93,13 @@ const LoginFirst = ({ navigation }) => {
       setProfileImage(userInfo.photo)
       const { idToken } = await GoogleSignin.signIn()
       const googleCredential = auth.GoogleAuthProvider.credential(idToken)
+      saveData(
+        userInfo.user.email,
+        userInfo.user.name,
+        userInfo.user.photo,
+        userInfo.user.id,
+      )
+      navigation.navigate('StudentHome')
       return auth().signInWithCredential(googleCredential)
     } catch (error) {
       if (error.code === statusCodes.SIGN_IN_CANCELLED) {
@@ -83,9 +111,18 @@ const LoginFirst = ({ navigation }) => {
       } else if (error.code === statusCodes.PLAY_SERVICES_NOT_AVAILABLE) {
         // play services not available or outdated
         alert('PLAY_SERVICES_NOT_AVAILABLE')
+      } else {
+        console.log(error)
+        alert('Unknown error')
       }
     }
   }
+
+  auth().onAuthStateChanged(user => {
+    if (user) {
+      setAutheticated(true)
+    }
+  })
 
   return (
     <ScrollView contentContainerStyle={styles.container}>
@@ -162,6 +199,8 @@ const LoginFirst = ({ navigation }) => {
       <SafeAreaView marginTop={10}>
         <TextInput
           style={styles.input}
+          textContentType="emailAddress"
+          keyboardType="email-address"
           placeholder="Email / Username"
           value={email}
           onChangeText={txt => {
@@ -173,6 +212,7 @@ const LoginFirst = ({ navigation }) => {
         <TextInput
           style={styles.input}
           value={password}
+          secureTextEntry={true}
           onChangeText={txt => {
             setPassword(txt)
           }}
@@ -211,7 +251,7 @@ const LoginFirst = ({ navigation }) => {
           borderRadius: 12,
         }}
         onPress={() => {
-          saveData()
+          EmailSignIn(email, password)
         }}
       >
         Continue
@@ -256,9 +296,11 @@ const LoginFirst = ({ navigation }) => {
           borderRadius: 12,
           borderColor: '#0B774B',
         }}
-        onPress={() => {
-          signIn()
-        }}
+        onPress={() =>
+          GoogleSignIn().then(() => {
+            console.log('Signed In')
+          })
+        }
       >
         Continue with Google
       </Button>
@@ -309,17 +351,25 @@ const LoginFirst = ({ navigation }) => {
         width={1}
         style={{ width: '100%', marginTop: 15 }}
       />
-      <Text
-        style={{
-          color: '#0B774B',
-          textAlign: 'center',
-          marginTop: 10,
-          height: 50,
+      <Pressable
+        onPress={() => {
+          navigation.navigate('SignupEmail')
         }}
       >
-        Not a member yet?
-        <Text style={{ color: '#FF6E15', textAlign: 'center' }}> Join now</Text>
-      </Text>
+        <Text
+          style={{
+            color: '#0B774B',
+            textAlign: 'center',
+            marginTop: 10,
+            height: 50,
+          }}
+        >
+          Not a member yet?
+          <Text style={{ color: '#FF6E15', textAlign: 'center' }}>
+            Join now
+          </Text>
+        </Text>
+      </Pressable>
     </ScrollView>
   )
 }

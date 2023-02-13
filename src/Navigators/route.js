@@ -7,7 +7,6 @@ import OnboardingThird from '@/Containers/screens/Onboarding/onboarding_third'
 import OnboardingFourth from '@/Containers/screens/Onboarding/onboarding_fourth'
 import LoginFirst from '@/Containers/screens/Authentication/login_first'
 import SignupEmail from '@/Containers/screens/Authentication/signup_email'
-import SignupPassword from '@/Containers/screens/Authentication/signup_password'
 import LoginFourth from '@/Containers/screens/Authentication/login_fourth'
 import LoginFifth from '@/Containers/screens/Authentication/login_fifth'
 import LoginSixth from '@/Containers/screens/Authentication/login_sixth'
@@ -80,13 +79,6 @@ const screens = {
   },
   SignupEmail: {
     screen: SignupEmail,
-    navigationOptions: {
-      headerShown: false,
-      backgroundColor: 'white',
-    },
-  },
-  SignupPassword: {
-    screen: SignupPassword,
     navigationOptions: {
       headerShown: false,
       backgroundColor: 'white',

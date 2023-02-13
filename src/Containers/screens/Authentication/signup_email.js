@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import {
   StyleSheet,
   Text,
@@ -13,12 +13,53 @@ import {
 import Icon from 'react-native-vector-icons/Ionicons'
 import { Card, SearchBar } from '@rneui/themed'
 import { Button, Dialog, Divider } from '@rneui/base'
+import auth from '@react-native-firebase/auth'
+import firestore from '@react-native-firebase/firestore'
 
 const SignupEmail = ({ navigation }) => {
-  var width = Dimensions.get('window').width //full width
-  var height = Dimensions.get('window').height //full height
-  const [text, onChangeText] = React.useState(null)
-  const [password, onChangePassword] = React.useState(null)
+  const [authenticated, setAutheticated] = useState(false)
+  const [email, setEmail] = React.useState('')
+  const [password, setPassword] = React.useState('')
+  const [confirmpassword, setConfirmpassword] = React.useState('')
+  // Set an initializing state whilst Firebase connects
+  const [profileImage, setProfileImage] = useState('')
+
+  const saveData = (registered_email, name, photo, uid) => {
+    firestore()
+      .collection('UserData')
+      .add({
+        email: registered_email,
+        name: name,
+        photo: photo,
+        uid: uid,
+      })
+      .then(() => {
+        console.log('User added')
+      })
+  }
+
+  const SignUp = async (email, password, confirmpassword) => {
+    try {
+      if (password === confirmpassword) {
+        const res = await auth().createUserWithEmailAndPassword(email, password)
+        console.log(res)
+        saveData(
+          res.user.email,
+          res.user.displayName,
+          res.user.photoURL,
+          res.user.uid,
+        )
+        navigation.navigate('StudentHome')
+      } else {
+        alert(
+          'Please make sure your confirm password is same as your current password',
+        )
+      }
+    } catch (error) {
+      console.log(error)
+    }
+  }
+
   return (
     <ScrollView contentContainerStyle={styles.container}>
       <ScrollView horizontal>
@@ -97,8 +138,35 @@ const SignupEmail = ({ navigation }) => {
         <TextInput
           style={styles.input}
           placeholder="Email"
-          value={text}
-          onChangeText={onChangeText}
+          value={email}
+          onChangeText={txt => {
+            setEmail(txt)
+          }}
+          placeholderTextColor={'#0B774B'}
+          backgroundColor="#F9FFFC"
+        />
+      </SafeAreaView>
+      <SafeAreaView marginTop={10}>
+        <TextInput
+          style={styles.input}
+          placeholder="Password"
+          secureTextEntry={true}
+          value={password}
+          onChangeText={txt => {
+            setPassword(txt)
+          }}
+          placeholderTextColor={'#0B774B'}
+          backgroundColor="#F9FFFC"
+          color="black"
+        />
+      </SafeAreaView>
+      <SafeAreaView marginTop={10}>
+        <TextInput
+          style={styles.input}
+          secureTextEntry={true}
+          placeholder="Confirm Password"
+          value={confirmpassword}
+          onChangeText={setConfirmpassword}
           placeholderTextColor={'#0B774B'}
           backgroundColor="#F9FFFC"
         />
@@ -118,10 +186,13 @@ const SignupEmail = ({ navigation }) => {
           backgroundColor: '#0B774B',
           borderRadius: 12,
         }}
-        onPress={() => navigation.navigate('SignupPassword')}
+        onPress={() => {
+          SignUp(email, password, confirmpassword)
+        }}
       >
-        Continue
+        Sign up
       </Button>
+      {/*
       <Divider
         orientation="horizontal"
         color="#CDEFE9"
@@ -202,7 +273,7 @@ const SignupEmail = ({ navigation }) => {
         }}
       >
         Continue with Facebook
-      </Button>
+      </Button> */}
       <Text
         style={{
           color: '#0B774B',
@@ -225,17 +296,26 @@ const SignupEmail = ({ navigation }) => {
         width={1}
         style={{ width: '100%', marginTop: 15 }}
       />
-      <Text
-        style={{
-          color: '#0B774B',
-          textAlign: 'center',
-          marginTop: 10,
-          height: 50,
+      <Pressable
+        onPress={() => {
+          navigation.navigate('LoginFirst')
         }}
       >
-        Already a member?
-        <Text style={{ color: '#FF6E15', textAlign: 'center' }}> Sign in</Text>
-      </Text>
+        <Text
+          style={{
+            color: '#0B774B',
+            textAlign: 'center',
+            marginTop: 10,
+            height: 50,
+          }}
+        >
+          Already a member?
+          <Text style={{ color: '#FF6E15', textAlign: 'center' }}>
+            {' '}
+            Sign in
+          </Text>
+        </Text>
+      </Pressable>
     </ScrollView>
   )
 }

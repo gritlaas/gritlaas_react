@@ -1,5 +1,12 @@
 import React from 'react'
-import { StyleSheet, Text, View, Image, ScrollView } from 'react-native'
+import {
+  StyleSheet,
+  Text,
+  View,
+  Image,
+  ScrollView,
+  Pressable,
+} from 'react-native'
 import Icon from 'react-native-vector-icons/AntDesign'
 import { Pagination } from 'react-native-snap-carousel'
 import { Button } from '@rneui/base'
@@ -8,18 +15,24 @@ const OnboardingFourth = ({ navigation }) => {
   return (
     <ScrollView contentContainerStyle={styles.container}>
       <View>
-        <Text
-          style={{
-            marginTop: -5,
-            paddingLeft: 70,
-            color: '#0B774B',
-            fontSize: 15,
-            fontWeight: 'bold',
-            marginLeft: 200,
+        <Pressable
+          onPress={() => {
+            navigation.navigate('LoginFirst')
           }}
         >
-          Skip
-        </Text>
+          <Text
+            style={{
+              marginTop: -5,
+              paddingLeft: 70,
+              color: '#0B774B',
+              fontSize: 15,
+              fontWeight: 'bold',
+              marginLeft: 200,
+            }}
+          >
+            Skip
+          </Text>
+        </Pressable>
         <Image
           source={require('../../../Assets/Images/girl_2.jpeg')}
           style={{ width: 300, height: 300, marginTop: 0 }}
